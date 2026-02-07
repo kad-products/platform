@@ -27,9 +27,8 @@ jobs:
       - name: 🔬 Check semantic versioning
         id: semantic-release
         run: |
-            GITHUB_REF=${{ github.head_ref }}
-            pnpm dlx semantic-release --no-ci --dry-run --branches ${{ github.head_ref }}
-            pnpm dlx semantic-release --no-ci --dry-run --branches ${{ github.head_ref }} > output.txt
+            pnpm dlx semantic-release --no-ci --dry-run
+            pnpm dlx semantic-release --no-ci --dry-run > output.txt
             OUTPUT=$(cat output.txt | base64 -w 0)
             echo "::set-output name=releaseNote::$OUTPUT"
 

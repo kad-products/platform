@@ -25,24 +25,16 @@ jobs:
       - run: pnpm install
 
       - name: Semantic Release (Dry Run)
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm dlx semantic-release --dry-run
+        id: release-notes-preview
+        uses: guilhermetod/semantic-release-notes-preview@v1.0.0
 
-      - name: Comment on PR
-        if: always()
-        uses: actions/github-script@v7
+      - name: Comment release notes preview
+        uses: peter-evans/create-or-update-comment@v5
         with:
-          script: |
-            const output = `#### Semantic Release Dry Run
-            
-            This PR will trigger a release when merged to main.
-            
-            Check the logs above to see what version will be released.`;
-            
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: output
-            })
+          issue-number: ${{ github.event.number }}
+          body: |
+            Thank you for you contribution. Below is a preview of the release notes if your PR gets merged.
+
+            ---
+
+            ${{ steps.release-notes-preview.outputs.releaseNotes }}. 

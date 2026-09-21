@@ -1,13 +1,13 @@
-name: Release
+name: Create Release
 
 on:
   workflow_call:
 
 jobs:
-  release:
+  create-release:
     runs-on: ubuntu-latest
     concurrency:
-      group: release
+      group: create-release
       cancel-in-progress: false
     permissions:
       contents: write

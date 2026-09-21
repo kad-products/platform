@@ -1,10 +1,10 @@
-name: Release Dry Run
+name: Create Release Dry Run
 
 on:
   workflow_call:
 
 jobs:
-  release-dry-run:
+  create-release-dry-run:
     runs-on: ubuntu-latest
     permissions:
       contents: read

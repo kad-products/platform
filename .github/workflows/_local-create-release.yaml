@@ -1,0 +1,14 @@
+name: Release Platform
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  create-release:
+    uses: ./.github/workflows/create-release.yaml
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    secrets: inherit

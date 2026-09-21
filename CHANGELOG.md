@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/kad-products/platform/compare/v1.0.0...v1.1.0) (2026-09-21)
+
+### Features
+
+* docs for github packages in other projects ([16b1b73](https://github.com/kad-products/platform/commit/16b1b73618768ec26f712f00baa287ee1be5d87f))
+
 ## 1.0.0 (2026-09-21)
 
 ### Features

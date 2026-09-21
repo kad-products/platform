@@ -1,1 +1,1 @@
-pnpm lint:ci
+pnpm ci:lint

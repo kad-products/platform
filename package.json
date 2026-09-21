@@ -9,10 +9,10 @@
 		"ci:lint": "pnpm biome:check && pnpm knip:check && pnpm prettier:check",
 		"knip:check": "knip",
 		"knip:fix": "knip --fix",
-		"lint-staged": "lint-staged --allow-empty",
 		"prepare": "husky",
 		"prettier:check": "prettier --check .",
-		"prettier:fix": "prettier --write ."
+		"prettier:fix": "prettier --write .",
+		"staged:lint": "lint-staged --allow-empty"
 	},
 	"lint-staged": {
 		"*": [

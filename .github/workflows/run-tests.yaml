@@ -1,0 +1,34 @@
+name: Run Tests
+
+on:
+  workflow_call:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+    timeout-minutes: 60
+    permissions:
+      contents: read
+
+    steps:
+      - run: apt-get update && apt-get install -y git-lfs
+
+      - uses: actions/checkout@v7
+        with:
+          lfs: true
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - run: pnpm install
+
+      - run: pnpm tests:ci
+        env:
+          HOME: /root

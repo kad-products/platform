@@ -4,15 +4,15 @@ Two reusable workflows intended to be used together as a `verify-changes` workfl
 
 ## `lint-code.yaml`
 
-Runs the repo's lint, format, and type checks via a `pnpm lint:ci` script convention. The consuming repo is responsible for defining what `lint:ci` covers — typically a combination of tools like Biome, Knip, and TypeScript type checking.
+Runs the repo's lint, format, and type checks via the `ci:lint` script. The consuming repo is responsible for defining what `ci:lint` covers — typically a combination of Biome, Knip, Prettier, and TypeScript type checking.
 
 ## `run-tests.yaml`
 
-Runs the repo's full test suite via a `pnpm tests:ci` script convention inside the official Playwright container. Using the Playwright container as the universal baseline means repos with only unit tests run in a slightly heavier environment, but all repos use the same setup — avoiding a two-tier system that would produce inconsistent check names.
+Runs the repo's full test suite via the `ci:tests` script inside the official Playwright container. Using the Playwright container as the universal baseline means repos with only unit tests run in a slightly heavier environment, but all repos use the same setup — avoiding a two-tier system that would produce inconsistent check names.
 
-Initializes Git LFS before checkout, uploads a `playwright-report` artifact on completion (even on failure), and sets `HOME: /root` to ensure Playwright can locate its browser installations inside the container.
+Initializes Git LFS before checkout and sets `HOME: /root` to ensure Playwright can locate its browser installations inside the container.
 
-The consuming repo defines what `tests:ci` runs — it may be unit tests only, Playwright component tests only, or any combination.
+The consuming repo defines what `ci:tests` runs — it may be unit tests only, Playwright component tests only, or any combination.
 
 ## Usage
 
@@ -44,8 +44,8 @@ Each consuming repo must define these in `package.json`:
 
 | Script | Purpose |
 |---|---|
-| `lint:ci` | Runs all lint, format, and type checks |
-| `tests:ci` | Runs the full test suite |
+| `ci:lint` | Runs all lint, format, and type checks |
+| `ci:tests` | Runs the full test suite |
 
 ## Playwright container version
 

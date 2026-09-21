@@ -1,4 +1,4 @@
-name: Verify Changes Platform
+name: Verify Changes
 
 on:
   pull_request:

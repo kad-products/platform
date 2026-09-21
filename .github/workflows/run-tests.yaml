@@ -29,6 +29,6 @@ jobs:
 
       - run: pnpm install
 
-      - run: pnpm tests:ci
+      - run: pnpm ci:tests
         env:
           HOME: /root

@@ -1,0 +1,12 @@
+name: Release Platform Dry Run
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  create-release-dry-run:
+    uses: ./.github/workflows/create-release-dry-run.yaml
+    permissions:
+      contents: read
+    secrets: inherit

@@ -1,0 +1,13 @@
+# pnpm Standards
+
+Guidelines and conventions for package scripts, tooling, and local development setup across KAD Products repos.
+
+## Contents
+
+| Guide | Description |
+|---|---|
+| [Script naming](./script-naming.md) | Conventions for naming package.json scripts consistently across repos |
+| [Linting](./linting.md) | Biome, Knip, and Prettier — what each tool covers and how they're configured |
+| [Testing](./testing.md) | Vitest and Playwright patterns and CI setup |
+| [Husky](./husky.md) | Git hook setup and what runs at each hook stage |
+| [Semantic release & commitlint](./semantic-release.md) | Commit message conventions, release config patterns, and commitlint setup |

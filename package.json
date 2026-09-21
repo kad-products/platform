@@ -6,9 +6,9 @@
 	"scripts": {
 		"biome:check": "biome check",
 		"biome:fix": "biome check --write .",
+		"ci:lint": "pnpm biome:check && pnpm knip:check && pnpm prettier:check",
 		"knip:check": "knip",
 		"knip:fix": "knip --fix",
-		"lint:ci": "pnpm biome:check && pnpm knip:check && pnpm prettier:check",
 		"lint-staged": "lint-staged --allow-empty",
 		"prepare": "husky",
 		"prettier:check": "prettier --check .",

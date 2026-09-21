@@ -1,0 +1,45 @@
+name: Release Dry Run
+
+on:
+  workflow_call:
+
+jobs:
+  release-dry-run:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          # Full history is required for semantic-release to find the last
+          # release tag and determine what the next version would be.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'pnpm'
+
+      - run: pnpm install
+
+      - run: |
+          pnpm dlx \
+            --package=semantic-release@25 \
+            --package=@semantic-release/commit-analyzer@13 \
+            --package=@semantic-release/release-notes-generator@14 \
+            --package=@semantic-release/changelog@7 \
+            --package=@semantic-release/npm@13 \
+            --package=@semantic-release/git@11 \
+            --package=@semantic-release/github@12 \
+            --package=conventional-changelog-conventionalcommits@9 \
+            semantic-release --dry-run --no-ci 2>&1 | tee /tmp/release-dry-run.txt
+          echo "## Release Dry Run" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          sed 's/\x1b\[[0-9;]*m//g' /tmp/release-dry-run.txt >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

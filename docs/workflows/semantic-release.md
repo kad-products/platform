@@ -1,0 +1,73 @@
+# Semantic Release Workflows
+
+Two reusable workflows for automating versioning and releases with [semantic-release](https://semantic-release.gitbook.io/semantic-release/). Both expect a `release.config.js` (or equivalent) in the consuming repo and a `.nvmrc` for Node version resolution.
+
+## `release.yaml` — Release
+
+Runs semantic-release on pushes to the main branch. Handles branch protection automatically: saves the current rules, disables protection so semantic-release can push the version commit and tag, then restores the original rules whether the release succeeds or fails.
+
+Uses the `KAD_WORKFLOW_AUTOMATION` token (passed via `secrets: inherit`) rather than the default `GITHUB_TOKEN` so that the release commit triggers downstream workflows.
+
+### Usage
+
+```yaml
+# .github/workflows/release.yaml
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    uses: kad-products/platform/.github/workflows/release.yaml@main
+    secrets: inherit
+```
+
+### Required permissions
+
+The calling workflow or repository must grant:
+
+- `contents: write`
+- `issues: write`
+- `pull-requests: write`
+
+### Required secrets
+
+| Secret | Purpose |
+|---|---|
+| `KAD_WORKFLOW_AUTOMATION` | PAT with repo and workflow scopes, used to push the release commit/tag and manage branch protection |
+
+---
+
+## `release-dry-run.yaml` — Dry Run
+
+Runs semantic-release in dry-run mode on pull requests targeting the main branch. No tags, commits, or GitHub releases are created. Output is written to the job summary so you can see the projected next version and changelog directly in the PR checks.
+
+Uses `--no-ci` to bypass branch validation — PRs check out a detached merge commit rather than the target branch, which semantic-release would otherwise reject.
+
+### Usage
+
+```yaml
+# .github/workflows/release-dry-run.yaml
+name: Release Dry Run
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  release-dry-run:
+    uses: kad-products/platform/.github/workflows/release-dry-run.yaml@main
+    secrets: inherit
+```
+
+### Required permissions
+
+The calling workflow or repository must grant:
+
+- `contents: read`

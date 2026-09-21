@@ -1,4 +1,4 @@
-name: Release Platform Dry Run
+name: Create Release Dry Run
 
 on:
   pull_request:

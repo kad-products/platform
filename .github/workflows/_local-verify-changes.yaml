@@ -9,4 +9,5 @@ jobs:
     uses: ./.github/workflows/lint-code.yaml
     permissions:
       contents: read
+      packages: read
     secrets: inherit

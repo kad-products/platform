@@ -29,12 +29,14 @@ jobs:
     uses: kad-products/platform/.github/workflows/lint-code.yaml@main
     permissions:
       contents: read
+      packages: read
     secrets: inherit
 
   run-tests:
     uses: kad-products/platform/.github/workflows/run-tests.yaml@main
     permissions:
       contents: read
+      packages: read
     secrets: inherit
 ```
 

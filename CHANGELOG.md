@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/kad-products/platform/compare/v1.2.0...v1.2.1) (2026-09-22)
+
+### Bug Fixes
+
+* pass a node token to the setup action ([4e96596](https://github.com/kad-products/platform/commit/4e965965cc718ef2a78dd011dbaa0c8d381c4a55))
+
 ## [1.2.0](https://github.com/kad-products/platform/compare/v1.1.1...v1.2.0) (2026-09-22)
 
 ### Features

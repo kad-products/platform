@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/kad-products/platform/compare/v1.2.1...v1.2.2) (2026-09-22)
+
+### Bug Fixes
+
+* callers control the ceiling perms on ci tokens ([6890f41](https://github.com/kad-products/platform/commit/6890f415ff3afe4448e88472097a6f80decd69cc))
+* workflows request enough perms to pull private pkg ([be1fc63](https://github.com/kad-products/platform/commit/be1fc63d538233f06765f475995616cddbc150f4))
+
 ## [1.2.1](https://github.com/kad-products/platform/compare/v1.2.0...v1.2.1) (2026-09-22)
 
 ### Bug Fixes

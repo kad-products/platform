@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/kad-products/platform/compare/v1.1.1...v1.2.0) (2026-09-22)
+
+### Features
+
+* point node setup at github pkg registry for design system ([b453f38](https://github.com/kad-products/platform/commit/b453f38a64a834a059bbb353d7e0824b4dcfbab5))
+
 ## [1.1.1](https://github.com/kad-products/platform/compare/v1.1.0...v1.1.1) (2026-09-22)
 
 ### Bug Fixes

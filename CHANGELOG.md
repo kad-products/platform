@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/kad-products/platform/compare/v1.1.0...v1.1.1) (2026-09-22)
+
+### Bug Fixes
+
+* docs for local npmrc ([b29c808](https://github.com/kad-products/platform/commit/b29c808a95d066de3b5ca790e5b8faace12dccdd))
+
 ## [1.1.0](https://github.com/kad-products/platform/compare/v1.0.0...v1.1.0) (2026-09-21)
 
 ### Features

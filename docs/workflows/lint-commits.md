@@ -19,9 +19,11 @@ jobs:
     uses: kad-products/platform/.github/workflows/lint-commits.yaml@main
     permissions:
       contents: read
+      packages: read
     secrets: inherit
 ```
 
 ## Required permissions
 
 - `contents: read`
+- `packages: read`

@@ -9,4 +9,5 @@ jobs:
     uses: ./.github/workflows/create-release-dry-run.yaml
     permissions:
       contents: read
+      packages: read
     secrets: inherit

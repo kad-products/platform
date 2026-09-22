@@ -25,6 +25,7 @@ jobs:
       contents: write
       issues: write
       pull-requests: write
+      packages: read
     secrets: inherit
 ```
 
@@ -57,5 +58,6 @@ jobs:
     uses: kad-products/platform/.github/workflows/create-release-dry-run.yaml@main
     permissions:
       contents: read
+      packages: read
     secrets: inherit
 ```

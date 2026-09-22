@@ -2,43 +2,30 @@
 
 GitHub Packages requires authentication to install packages, even public ones. This guide covers how to configure pnpm to install `@kad-products` scoped packages.
 
-## 1. Create a personal access token
+## Project `.npmrc`
 
-In GitHub, go to **Settings → Developer settings → Personal access tokens → Tokens (classic)** and generate a token with the `read:packages` scope. No other scopes are needed.
-
-## 2. Add the token to your global `.npmrc`
-
-Add the following to `~/.npmrc`, replacing `YOUR_TOKEN` with the token you just created:
-
-```
-@kad-products:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=YOUR_TOKEN
-```
-
-This scopes the GitHub Packages registry to `@kad-products` packages only — all other packages continue to resolve from the default npm registry.
-
-## 3. Install as normal
-
-```sh
-pnpm add @kad-products/design-system
-```
-
-## CI setup for consuming repos
-
-When a repo that depends on `@kad-products` packages runs `pnpm install` in CI, it also needs registry auth. The `GITHUB_TOKEN` available in every workflow run already has implicit `read:packages` access for packages within the `kad-products` org — it just needs to be wired up.
-
-### 1. Add a project-level `.npmrc`
-
-Commit this to the root of the consuming repo. The token value is intentionally left as an environment variable reference — it will be populated at runtime by the workflow:
+Commit this to the root of the repo. It scopes the `@kad-products` registry to GitHub Packages and reads the auth token from the `NODE_AUTH_TOKEN` environment variable at install time:
 
 ```
 @kad-products:registry=https://npm.pkg.github.com
 //npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
 ```
 
-### 2. Add `registry-url` to the shared workflow's `setup-node` step
+All other packages continue to resolve from the default npm registry.
 
-The shared `create-release.yaml` workflow will need `registry-url` added to the `actions/setup-node` step. This causes the action to automatically set `NODE_AUTH_TOKEN` from `GITHUB_TOKEN`:
+## Local development
+
+Create a GitHub personal access token with the `read:packages` scope (**Settings → Developer settings → Personal access tokens → Tokens (classic)**), then export it from your shell profile:
+
+```sh
+export NODE_AUTH_TOKEN=YOUR_TOKEN
+```
+
+`pnpm install` will pick it up automatically via the committed `.npmrc`.
+
+## CI setup for consuming repos
+
+`GITHUB_TOKEN` in every workflow run already has implicit `read:packages` access for packages within the `kad-products` org. Adding `registry-url` to the `actions/setup-node` step causes the action to set `NODE_AUTH_TOKEN` from `GITHUB_TOKEN` automatically — no PAT or secret changes needed:
 
 ```yaml
 - uses: actions/setup-node@v7
@@ -48,4 +35,4 @@ The shared `create-release.yaml` workflow will need `registry-url` added to the 
     registry-url: 'https://npm.pkg.github.com'
 ```
 
-No changes to `KAD_WORKFLOW_AUTOMATION` or any other PAT are needed — `GITHUB_TOKEN` covers it.
+This will need to be added to the shared `create-release.yaml` workflow when a consuming repo first adds an `@kad-products` dependency.

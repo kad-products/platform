@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/kad-products/platform/compare/v1.2.2...v1.3.0) (2026-09-22)
+
+### Features
+
+* add workflow for deploying to cloudflare ([ad39a28](https://github.com/kad-products/platform/commit/ad39a281802d1ee92af11f01a8c1c83fda55f44f))
+
 ## [1.2.2](https://github.com/kad-products/platform/compare/v1.2.1...v1.2.2) (2026-09-22)
 
 ### Bug Fixes

@@ -11,3 +11,9 @@ jobs:
       contents: read
       packages: read
     secrets: inherit
+
+  test-open-tofu:
+    uses: ./.github/workflows/test-open-tofu.yaml
+    permissions:
+      contents: read
+    secrets: inherit

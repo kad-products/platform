@@ -1,3 +1,14 @@
+## [1.4.0](https://github.com/kad-products/platform/compare/v1.3.0...v1.4.0) (2026-09-23)
+
+### Features
+
+* initial opentofu modules ([d5932d7](https://github.com/kad-products/platform/commit/d5932d7dda8d97478e8235860f47e3d5b99a6e10))
+
+### Bug Fixes
+
+* get tests passing for tofu modules ([5cac183](https://github.com/kad-products/platform/commit/5cac1831054e82d7056a3af547a74228a2ff225b))
+* repo name as input for env module ([14b7dff](https://github.com/kad-products/platform/commit/14b7dff614344cde8fd0afa44ce5cd9ada9c8cb3))
+
 ## [1.3.0](https://github.com/kad-products/platform/compare/v1.2.2...v1.3.0) (2026-09-22)
 
 ### Features

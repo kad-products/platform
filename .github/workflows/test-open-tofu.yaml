@@ -18,8 +18,14 @@ jobs:
         with:
           tofu_version: latest
 
-      - run: tofu init
-        working-directory: open-tofu/modules/environment
+      - working-directory: open-tofu/modules/environment
+        run: |
+          tofu init
+          tofu test
+        
 
-      - run: tofu test
-        working-directory: open-tofu/modules/environment
+      - working-directory: open-tofu/modules/repo
+        run: |
+          tofu init
+          tofu test
+        

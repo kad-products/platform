@@ -14,5 +14,9 @@ variable "is_product" {
 variable "required_checks" {
   description = "Set/list of checks required to pass on PRs to main"
   type        = set(string)
-  default     = []
+
+  validation {
+    condition     = length(var.required_checks) >= 1
+    error_message = "At least one required check must be specified."
+  }
 }

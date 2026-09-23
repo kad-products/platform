@@ -1,7 +1,7 @@
 mock_provider "github" {
   mock_data "github_users" {
     defaults = {
-      usernames = ["arsdehnel", "DorothyToth", "karennee-debug"]
+      logins = ["arsdehnel", "DorothyToth", "karennee-debug"]
     }
   }
 

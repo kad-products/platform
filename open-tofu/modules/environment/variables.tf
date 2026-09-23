@@ -1,3 +1,8 @@
+variable "repo_name" {
+  description = "Name/slug of the repo"
+  type        = string
+}
+
 variable "environment_name" {
   description = "Name of the environment"
   type        = string

@@ -1,6 +1,6 @@
 resource "github_repository_environment" "environment" {
   environment = var.environment_name
-  repository  = github_repository.repo.name
+  repository  = var.repo_name
 
   reviewers {
     users = [for u in data.github_user.org_admins : u.id]

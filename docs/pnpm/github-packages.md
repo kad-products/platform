@@ -4,14 +4,17 @@ GitHub Packages requires authentication to install packages, even public ones. T
 
 ## Project `.npmrc`
 
-Commit this to the root of the repo. It scopes the `@kad-products` registry to GitHub Packages and reads the auth token from the `NODE_AUTH_TOKEN` environment variable at install time:
+Commit this to the root of the repo. It scopes the `@kad-products` registry to GitHub Packages. 
 
 ```
 @kad-products:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
 ```
 
-All other packages continue to resolve from the default npm registry.
+All other packages continue to resolve from the default npm registry.  And then run this command to tell `pnpm` where the token is stored.  Using variable expansion in `.npmrc` is not supported by `pnpm`.
+
+```sh
+pnpm config set //npm.pkg.github.com/:_authToken "$NODE_AUTH_TOKEN"
+```
 
 ## Local development
 

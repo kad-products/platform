@@ -12,8 +12,16 @@ jobs:
       packages: read
     secrets: inherit
 
-  test-open-tofu:
+  test-github-environment:
     uses: ./.github/workflows/test-open-tofu.yaml
     permissions:
       contents: read
-    secrets: inherit
+    with:
+      working_directory: open-tofu/modules/github-environment
+
+  test-github-repo:
+    uses: ./.github/workflows/test-open-tofu.yaml
+    permissions:
+      contents: read
+    with:
+      working_directory: open-tofu/modules/github-repo

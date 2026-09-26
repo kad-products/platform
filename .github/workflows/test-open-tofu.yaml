@@ -2,6 +2,11 @@ name: Test OpenTofu
 
 on:
   workflow_call:
+    inputs:
+      working_directory:
+        description: 'Path to the OpenTofu module to test'
+        required: true
+        type: string
 
 jobs:
   test-open-tofu:
@@ -18,14 +23,7 @@ jobs:
         with:
           tofu_version: latest
 
-      - working-directory: open-tofu/modules/environment
+      - working-directory: ${{ inputs.working_directory }}
         run: |
           tofu init
           tofu test
-        
-
-      - working-directory: open-tofu/modules/repo
-        run: |
-          tofu init
-          tofu test
-        

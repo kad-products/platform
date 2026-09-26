@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/kad-products/platform/compare/v1.4.0...v1.5.0) (2026-09-26)
+
+### Features
+
+* add state-storage locally run TF for solving chicken/egg problem ([c22765d](https://github.com/kad-products/platform/commit/c22765dbf475c568813103a0a7667faa71995401))
+
 ## [1.4.0](https://github.com/kad-products/platform/compare/v1.3.0...v1.4.0) (2026-09-23)
 
 ### Features

@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/kad-products/platform/compare/v1.6.0...v1.6.1) (2026-09-26)
+
+### Bug Fixes
+
+* clean up tofu test workflow and related docs ([10bb13d](https://github.com/kad-products/platform/commit/10bb13dc951c0300a58088b3e82f532bd715ee47))
+* move tf modules to better directory names ([7bff794](https://github.com/kad-products/platform/commit/7bff7940b6971a22522d8527a139a2d79c850de3))
+
 ## [1.6.0](https://github.com/kad-products/platform/compare/v1.5.0...v1.6.0) (2026-09-26)
 
 ### Features

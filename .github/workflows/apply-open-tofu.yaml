@@ -1,0 +1,54 @@
+name: Apply OpenTofu
+
+on:
+  workflow_call:
+    inputs:
+      app_name:
+        description: 'Application name (first segment of the state key)'
+        required: true
+        type: string
+      environment:
+        description: 'Environment name (second segment of the state key)'
+        required: true
+        type: string
+      working_directory:
+        description: 'Path to the OpenTofu root configuration within the calling repo'
+        required: true
+        type: string
+jobs:
+  apply-open-tofu:
+    name: Apply
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: latest
+
+      - name: Generate backend config
+        env:
+          TOFU_STATE_KEY: ${{ inputs.app_name }}/${{ inputs.environment }}/terraform.tfstate
+          TOFU_BACKEND_ACCESS_KEY: ${{ secrets.TOFU_BACKEND_ACCESS_KEY_ID }}
+          TOFU_BACKEND_SECRET_KEY: ${{ secrets.TOFU_BACKEND_SECRET_ACCESS_KEY }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          envsubst '${TOFU_STATE_KEY} ${TOFU_BACKEND_ACCESS_KEY} ${TOFU_BACKEND_SECRET_KEY} ${CF_ACCOUNT_ID}' \
+            < open-tofu/templates/backend.tf.tpl \
+            > ${{ inputs.working_directory }}/backend.tf
+
+      - name: Init and Plan
+        working-directory: ${{ inputs.working_directory }}
+        run: |
+          tofu init
+          tofu plan -out=/tmp/tfplan
+
+      - name: Apply
+        working-directory: ${{ inputs.working_directory }}
+        run: tofu apply /tmp/tfplan

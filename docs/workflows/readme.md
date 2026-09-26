@@ -6,6 +6,7 @@ Reusable GitHub Actions workflows for use across the KAD Products organization. 
 
 | Workflow | Description |
 |---|---|
+| [Apply OpenTofu](./apply-open-tofu.md) | Runs OpenTofu plan and apply against a calling repo's infrastructure, using Cloudflare R2 for remote state |
 | [Create Release](./semantic-release.md) | Automated versioning and GitHub release creation on push to main, with a dry-run variant for pull requests |
 | [Lint Commits](./lint-commits.md) | Validates that PR commits follow the Conventional Commits format |
 | [Verify Changes](./verify-changes.md) | Lint and test checks intended to run together on pull requests — produces consistent job names for branch protection rulesets |

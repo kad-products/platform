@@ -33,4 +33,4 @@ When a workflow contains a single job, the job key matches the filename without 
 
 ### Step `id` and `name`
 
-Step IDs are optional and should only be added when a later step needs to reference the outputs of that step. When an `id` is used, a `name` should also be provided so the step has a readable title in the GitHub Actions UI. Steps that don't expose outputs should have neither — let the action name or the first line of the `run` block serve as the label.
+All steps in all shared workflows should have a short name representing the step's purpose.  Step IDs are optional and should only be added when a later step needs to reference the outputs of that step. Steps that don't expose outputs should not have an ID.

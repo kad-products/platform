@@ -16,24 +16,29 @@ jobs:
       packages: read
 
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           persist-credentials: false
 
-      - uses: pnpm/action-setup@v6
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
 
-      - uses: actions/setup-node@v7
+      - name: Set up Node
+        uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
           registry-url: 'https://npm.pkg.github.com'
 
-      - run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: |
+      - name: Collect branch protection rules
+        run: |
           curl --fail-with-body -s \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
@@ -60,7 +65,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.KAD_WORKFLOW_AUTOMATION }}
 
-      - run: |
+      - name: Disable branch protection
+        run: |
           curl -X PUT \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
@@ -69,7 +75,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.KAD_WORKFLOW_AUTOMATION }}
 
-      - run: |
+      - name: Create release
+        run: |
           pnpm dlx \
             --package=semantic-release@25 \
             --package=@semantic-release/commit-analyzer@13 \
@@ -88,7 +95,8 @@ jobs:
           GIT_COMMITTER_EMAIL: semantic-release-bot@users.noreply.github.com
           HUSKY: 0
 
-      - if: always()
+      - name: Restore branch protection
+        if: always()
         run: |
           curl -X PUT \
             -H "Authorization: token $GITHUB_TOKEN" \

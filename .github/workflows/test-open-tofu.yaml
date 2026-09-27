@@ -15,15 +15,18 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout
+        uses: actions/checkout@v7
         with:
           persist-credentials: false
 
-      - uses: opentofu/setup-opentofu@v1
+      - name: Set up OpenTofu
+        uses: opentofu/setup-opentofu@v1
         with:
           tofu_version: latest
 
-      - working-directory: ${{ inputs.working_directory }}
+      - name: Init and test
+        working-directory: ${{ inputs.working_directory }}
         run: |
           tofu init
           tofu test

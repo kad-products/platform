@@ -1,3 +1,13 @@
+## [1.7.0](https://github.com/kad-products/platform/compare/v1.6.1...v1.7.0) (2026-09-27)
+
+### Features
+
+* add state_type to the tf state key paths ([aca3dc5](https://github.com/kad-products/platform/commit/aca3dc56630d0cafb219c6df88950e10635537ed))
+
+### Bug Fixes
+
+* better path for product homepage ([4ddc1e3](https://github.com/kad-products/platform/commit/4ddc1e3ccb1a1e465cca97a3dca5aac833a8f987))
+
 ## [1.6.1](https://github.com/kad-products/platform/compare/v1.6.0...v1.6.1) (2026-09-26)
 
 ### Bug Fixes

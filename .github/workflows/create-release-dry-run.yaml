@@ -9,6 +9,7 @@ jobs:
     permissions:
       contents: read
       packages: read
+      pull-requests: write
 
     steps:
       - uses: actions/checkout@v7
@@ -43,9 +44,20 @@ jobs:
             --package=@semantic-release/github@12 \
             --package=conventional-changelog-conventionalcommits@9 \
             semantic-release --dry-run --no-ci 2>&1 | tee /tmp/release-dry-run.txt
+          sed 's/\x1b\[[0-9;]*m//g' /tmp/release-dry-run.txt > /tmp/release-dry-run-clean.txt
           echo "## Release Dry Run" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
-          sed 's/\x1b\[[0-9;]*m//g' /tmp/release-dry-run.txt >> $GITHUB_STEP_SUMMARY
+          cat /tmp/release-dry-run-clean.txt >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
+          echo '### Release Dry Run' > /tmp/pr-comment.md
+          echo '```' >> /tmp/pr-comment.md
+          cat /tmp/release-dry-run-clean.txt >> /tmp/pr-comment.md
+          echo '```' >> /tmp/pr-comment.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: thollander/actions-comment-pull-request@v3
+        with:
+          file-path: /tmp/pr-comment.md
+          comment-tag: release-dry-run
+          github-token: ${{ secrets.GITHUB_TOKEN }}

@@ -7,6 +7,13 @@ function isDryRun() {
 }
 
 function getDryRunConfig() {
+	// In a PR context, GITHUB_REF is refs/pull/N/merge — semantic-release's
+	// branch detection reads that and sees it's not a release branch. Remap it
+	// to the actual head branch so it proceeds to analyze commits.
+	if (process.env.GITHUB_HEAD_REF) {
+		process.env.GITHUB_REF = `refs/heads/${process.env.GITHUB_HEAD_REF}`;
+	}
+
 	// biome-ignore lint/suspicious/noConsole: temporary debugging
 	console.log(`Here in the dry run`);
 	// biome-ignore lint/suspicious/noConsole: temporary debugging

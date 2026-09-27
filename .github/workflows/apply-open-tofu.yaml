@@ -27,6 +27,8 @@ jobs:
     environment: ${{ inputs.state_name }}
     permissions:
       contents: read
+    env:
+      TF_VAR_kad_workflow_automation: ${{ secrets.KAD_WORKFLOW_AUTOMATION }}
 
     steps:
       - name: Checkout

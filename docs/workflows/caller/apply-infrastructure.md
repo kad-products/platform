@@ -1,6 +1,6 @@
-# Apply OpenTofu
+# Apply Infrastructure
 
-Runs `tofu init`, `tofu plan`, and `tofu apply` against the calling repo's OpenTofu configuration, using KAD Product's shared Cloudflare R2 bucket as the remote backend for state storage.
+Runs `tofu init`, `tofu plan`, and `tofu apply` against the calling repo's OpenTofu configuration, using KAD Products' shared Cloudflare R2 bucket as the remote backend for state storage.
 
 The plan is saved and passed directly to apply, so the apply step executes exactly what was planned. This also sets up a clean split point for adding an approval gate between plan and apply in the future — that would require splitting this into two jobs with artifact upload/download, but no changes to the caller workflow.
 
@@ -9,8 +9,8 @@ The backend configuration is fully managed by the workflow — calling repos do 
 ## Usage
 
 ```yaml
-# .github/workflows/deploy-infrastructure.yaml
-name: Deploy Infrastructure
+# .github/workflows/apply-infrastructure.yaml
+name: Apply Infrastructure
 
 on:
   push:

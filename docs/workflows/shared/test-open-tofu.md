@@ -1,0 +1,19 @@
+# test-open-tofu.yaml
+
+Runs `tofu init` and `tofu test` against a single OpenTofu module directory.
+
+## Inputs
+
+| Input | Required | Description |
+|---|---|---|
+| `working_directory` | Yes | Path to the OpenTofu module to test |
+
+## Secrets
+
+None.
+
+## Permissions
+
+| Permission | Level |
+|---|---|
+| `contents` | `read` |

@@ -1,3 +1,9 @@
+## [1.10.1](https://github.com/kad-products/platform/compare/v1.10.0...v1.10.1) (2026-09-27)
+
+### Bug Fixes
+
+* tofu plan shouldn't bother having color ([79cd670](https://github.com/kad-products/platform/commit/79cd6709d6de97feec5a733e7e12b48869076a3d))
+
 ## [1.10.0](https://github.com/kad-products/platform/compare/v1.9.0...v1.10.0) (2026-09-27)
 
 ### Features

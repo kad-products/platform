@@ -1,3 +1,9 @@
+## [1.10.0](https://github.com/kad-products/platform/compare/v1.9.0...v1.10.0) (2026-09-27)
+
+### Features
+
+* include automation PAT in tofu workflows ([5f8023d](https://github.com/kad-products/platform/commit/5f8023d49e9a3e3fdb1b6577be00b9e7dbeebb10))
+
 ## [1.9.0](https://github.com/kad-products/platform/compare/v1.8.1...v1.9.0) (2026-09-27)
 
 ### Features

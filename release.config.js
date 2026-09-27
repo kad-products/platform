@@ -7,6 +7,37 @@ function isDryRun() {
 }
 
 function getDryRunConfig() {
+	// biome-ignore lint/suspicious/noConsole: temporary debugging
+	console.log(`Here in the dry run`);
+	// biome-ignore lint/suspicious/noConsole: temporary debugging
+	console.log({
+		repositoryUrl: getLocalRepoUrl(),
+		branches: [getCurrentBranch()],
+		plugins: [
+			[
+				'@semantic-release/commit-analyzer',
+				{
+					preset: 'conventionalcommits',
+					releaseRules: [{ type: 'refactor', release: 'patch' }],
+				},
+			],
+			[
+				'@semantic-release/release-notes-generator',
+				{
+					preset: 'conventionalcommits',
+					presetConfig: {
+						types: [
+							{ type: 'feat', section: 'Features' },
+							{ type: 'fix', section: 'Bug Fixes' },
+							{ type: 'perf', section: 'Performance Improvements' },
+							{ type: 'revert', section: 'Reverts' },
+							{ type: 'refactor', section: 'Code Refactoring' },
+						],
+					},
+				},
+			],
+		],
+	});
 	return {
 		repositoryUrl: getLocalRepoUrl(),
 		branches: [getCurrentBranch()],

@@ -59,5 +59,6 @@ jobs:
     permissions:
       contents: read
       packages: read
+      pull-requests: write
     secrets: inherit
 ```

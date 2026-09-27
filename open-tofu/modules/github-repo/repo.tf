@@ -6,5 +6,5 @@ resource "github_repository" "repo" {
   has_discussions        = false
   has_issues             = true
   has_projects           = false
-  homepage_url           = var.is_product ? "https://kad-products/products/${var.repo_name}/" : ""
+  homepage_url           = var.is_product ? "https://kad-products.com/products/${var.repo_name}/" : ""
 }

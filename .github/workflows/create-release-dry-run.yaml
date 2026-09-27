@@ -17,6 +17,7 @@ jobs:
           # release tag and determine what the next version would be.
           fetch-depth: 0
           persist-credentials: false
+          ref: ${{ github.head_ref || github.ref_name }}
 
       - uses: pnpm/action-setup@v6
 

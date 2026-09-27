@@ -7,19 +7,24 @@ on:
         description: 'Application name (first segment of the state key)'
         required: true
         type: string
-      environment:
-        description: 'Environment name (second segment of the state key)'
+      state_type:
+        description: 'State category (second segment of the state key, e.g. github-config, app-deployment)'
+        required: true
+        type: string
+      state_name:
+        description: 'Specific instance within the category (third segment of the state key, e.g. setup, production)'
         required: true
         type: string
       working_directory:
         description: 'Path to the OpenTofu root configuration within the calling repo'
         required: true
         type: string
+
 jobs:
   apply-open-tofu:
     name: Apply
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: ${{ inputs.state_name }}
     permissions:
       contents: read
 
@@ -34,7 +39,7 @@ jobs:
 
       - name: Generate backend config
         env:
-          TOFU_STATE_KEY: ${{ inputs.app_name }}/${{ inputs.environment }}/terraform.tfstate
+          TOFU_STATE_KEY: ${{ inputs.app_name }}/${{ inputs.state_type }}/${{ inputs.state_name }}/terraform.tfstate
           TOFU_BACKEND_ACCESS_KEY: ${{ secrets.TOFU_BACKEND_ACCESS_KEY_ID }}
           TOFU_BACKEND_SECRET_KEY: ${{ secrets.TOFU_BACKEND_SECRET_ACCESS_KEY }}
           CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

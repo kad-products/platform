@@ -17,14 +17,26 @@ on:
     branches: [main]
 
 jobs:
-  deploy:
+  deploy-github-config:
     uses: kad-products/platform/.github/workflows/apply-open-tofu.yaml@main
     with:
       app_name: my-app
-      environment: production
-      working_directory: infrastructure
+      state_type: github-config
+      state_name: setup
+      working_directory: infrastructure/github
+    secrets: inherit
+
+  deploy-production:
+    uses: kad-products/platform/.github/workflows/apply-open-tofu.yaml@main
+    with:
+      app_name: my-app
+      state_type: app-deployment
+      state_name: production
+      working_directory: infrastructure/environments/production
     secrets: inherit
 ```
+
+State is stored at `<app_name>/<state_type>/<state_name>/terraform.tfstate`. `state_name` is also used as the GitHub Actions environment for the job — if the named environment doesn't exist it will be created automatically with no protection rules.
 
 The workflow reads the following organization secrets directly — callers do not need to map them:
 
@@ -38,7 +50,7 @@ The workflow reads the following organization secrets directly — callers do no
 
 | Input | Required | Description |
 |---|---|---|
-| `app_name` | Yes | Application name — used as the first segment of the state key (`<app_name>/<environment>/terraform.tfstate`) |
-| `environment` | Yes | Environment name — used as the second segment of the state key, and as the GitHub Actions environment for the job |
-| `working_directory` | Yes | Path to the OpenTofu root configuration within the calling repo (e.g. `infrastructure`) |
-
+| `app_name` | Yes | Application name — first segment of the state key |
+| `state_type` | Yes | State category — second segment of the state key (e.g. `github-config`, `app-deployment`) |
+| `state_name` | Yes | Instance within the category — third segment of the state key and the GitHub Actions environment (e.g. `setup`, `production`) |
+| `working_directory` | Yes | Path to the OpenTofu root configuration within the calling repo |

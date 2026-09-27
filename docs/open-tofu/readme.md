@@ -15,4 +15,12 @@ Modules are run via the [Apply OpenTofu](../workflows/apply-open-tofu.md) reusab
 
 ## State key convention
 
-State is stored at `<app_name>/<environment>/terraform.tfstate` in the shared R2 bucket. When calling the apply workflow, `app_name` should match the repository slug and `environment` should match the GitHub Actions environment (e.g. `production`).
+State is stored at `<app_name>/<state_type>/<state_name>/terraform.tfstate` in the shared R2 bucket. For example:
+
+| State key | Represents |
+|---|---|
+| `my-app/github-config/setup/terraform.tfstate` | GitHub repository and environment configuration |
+| `my-app/app-deployment/integration/terraform.tfstate` | Integration environment deployment |
+| `my-app/app-deployment/production/terraform.tfstate` | Production environment deployment |
+
+`app_name` should match the repository slug. `state_type` groups related state files by function. `state_name` identifies the specific instance and doubles as the GitHub Actions environment name for the apply job.

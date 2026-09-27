@@ -116,5 +116,9 @@ function getLocalRepoUrl() {
 }
 
 function getCurrentBranch() {
-	return execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
+	const branch = execSync('git rev-parse --abbrev-ref HEAD').toString().trim();
+	if (branch === 'HEAD') {
+		return process.env.GITHUB_HEAD_REF || process.env.GITHUB_REF_NAME || branch;
+	}
+	return branch;
 }

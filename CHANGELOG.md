@@ -1,3 +1,9 @@
+## [1.8.1](https://github.com/kad-products/platform/compare/v1.8.0...v1.8.1) (2026-09-27)
+
+### Bug Fixes
+
+* can't use template files from calling repo workflows ([cb4c8b4](https://github.com/kad-products/platform/commit/cb4c8b42914b3d79c6be9ed7cd65e81274fa9a88))
+
 ## [1.8.0](https://github.com/kad-products/platform/compare/v1.7.0...v1.8.0) (2026-09-27)
 
 ### Features

@@ -1,3 +1,13 @@
+## [1.9.0](https://github.com/kad-products/platform/compare/v1.8.1...v1.9.0) (2026-09-27)
+
+### Features
+
+* provide clear and useful workflow step names ([164adea](https://github.com/kad-products/platform/commit/164adeab69478e733d7e7041b63f77501c399ea4))
+
+### Bug Fixes
+
+* no input for tofu workflows ([db18109](https://github.com/kad-products/platform/commit/db181093150a68225d630fe3528a113621cd746b))
+
 ## [1.8.1](https://github.com/kad-products/platform/compare/v1.8.0...v1.8.1) (2026-09-27)
 
 ### Bug Fixes

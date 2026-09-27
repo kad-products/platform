@@ -75,7 +75,7 @@ jobs:
         run: |
           tofu init -input=false
           set +o pipefail
-          tofu plan -input=false 2>&1 | tee /tmp/plan_output.txt
+          tofu plan -input=false -no-color 2>&1 | tee /tmp/plan_output.txt
           PLAN_EXIT=${PIPESTATUS[0]}
           set -o pipefail
           {

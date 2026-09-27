@@ -33,7 +33,7 @@ jobs:
 
       - run: |
           set -euxo pipefail
-          pnpm dlx \
+          env -u GITHUB_ACTIONS pnpm dlx \
             --package=semantic-release@25 \
             --package=@semantic-release/commit-analyzer@13 \
             --package=@semantic-release/release-notes-generator@14 \
@@ -49,4 +49,3 @@ jobs:
           echo '```' >> $GITHUB_STEP_SUMMARY
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REF: refs/heads/${{ github.head_ref || github.ref_name }}

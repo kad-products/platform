@@ -31,6 +31,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: |
+          set -euxo pipefail
           pnpm dlx \
             --package=semantic-release@25 \
             --package=@semantic-release/commit-analyzer@13 \

@@ -49,10 +49,17 @@ jobs:
           echo '```' >> $GITHUB_STEP_SUMMARY
           cat /tmp/release-dry-run-clean.txt >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
-          echo '### Release Dry Run' > /tmp/pr-comment.md
-          echo '```' >> /tmp/pr-comment.md
-          cat /tmp/release-dry-run-clean.txt >> /tmp/pr-comment.md
-          echo '```' >> /tmp/pr-comment.md
+          NEXT_VERSION=$(grep 'The next release version is' /tmp/release-dry-run-clean.txt | awk '{print $NF}' || true)
+          if [ -n "$NEXT_VERSION" ]; then
+            echo "### Release Dry Run: v${NEXT_VERSION}" > /tmp/pr-comment.md
+            echo "" >> /tmp/pr-comment.md
+            awk '/Release note for version/{found=1; next} /^Done in/{found=0} found' \
+              /tmp/release-dry-run-clean.txt >> /tmp/pr-comment.md
+          else
+            echo "### Release Dry Run: No release" > /tmp/pr-comment.md
+            echo "" >> /tmp/pr-comment.md
+            echo "No commits found that would trigger a release." >> /tmp/pr-comment.md
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

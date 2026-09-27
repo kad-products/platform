@@ -1,0 +1,81 @@
+name: Plan OpenTofu
+
+on:
+  workflow_call:
+    inputs:
+      app_name:
+        description: 'Application name (first segment of the state key)'
+        required: true
+        type: string
+      state_type:
+        description: 'State category (second segment of the state key, e.g. github-config, app-deployment)'
+        required: true
+        type: string
+      state_name:
+        description: 'Specific instance within the category (third segment of the state key, e.g. setup, production)'
+        required: true
+        type: string
+      working_directory:
+        description: 'Path to the OpenTofu root configuration within the calling repo'
+        required: true
+        type: string
+
+jobs:
+  plan-open-tofu:
+    name: Plan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - uses: opentofu/setup-opentofu@v1
+        with:
+          tofu_version: latest
+
+      - name: Generate backend config
+        env:
+          TOFU_STATE_KEY: ${{ inputs.app_name }}/${{ inputs.state_type }}/${{ inputs.state_name }}/terraform.tfstate
+          TOFU_BACKEND_ACCESS_KEY: ${{ secrets.TOFU_BACKEND_ACCESS_KEY_ID }}
+          TOFU_BACKEND_SECRET_KEY: ${{ secrets.TOFU_BACKEND_SECRET_ACCESS_KEY }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          envsubst '${TOFU_STATE_KEY} ${TOFU_BACKEND_ACCESS_KEY} ${TOFU_BACKEND_SECRET_KEY} ${CF_ACCOUNT_ID}' \
+            < open-tofu/templates/backend.tf.tpl \
+            > ${{ inputs.working_directory }}/backend.tf
+
+      - name: Init and Plan
+        id: plan
+        working-directory: ${{ inputs.working_directory }}
+        run: |
+          tofu init
+          set +o pipefail
+          tofu plan 2>&1 | tee /tmp/plan_output.txt
+          PLAN_EXIT=${PIPESTATUS[0]}
+          set -o pipefail
+          {
+            echo 'output<<PLAN_EOF'
+            cat /tmp/plan_output.txt
+            echo 'PLAN_EOF'
+          } >> $GITHUB_OUTPUT
+          exit $PLAN_EXIT
+
+      - name: Comment plan on PR
+        if: always() && github.event_name == 'pull_request'
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          comment-tag: tofu-plan-${{ inputs.state_name }}
+          message: |
+            ### ${{ steps.plan.outcome == 'success' && '✅' || '❌' }} OpenTofu Plan: `${{ inputs.state_name }}`
+
+            <details><summary>Plan output</summary>
+
+            ```
+            ${{ steps.plan.outputs.output }}
+            ```
+
+            </details>

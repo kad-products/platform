@@ -44,9 +44,26 @@ jobs:
           TOFU_BACKEND_SECRET_KEY: ${{ secrets.TOFU_BACKEND_SECRET_ACCESS_KEY }}
           CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          envsubst '${TOFU_STATE_KEY} ${TOFU_BACKEND_ACCESS_KEY} ${TOFU_BACKEND_SECRET_KEY} ${CF_ACCOUNT_ID}' \
-            < open-tofu/templates/backend.tf.tpl \
-            > ${{ inputs.working_directory }}/backend.tf
+          cat > "${{ inputs.working_directory }}/backend.tf" <<EOF
+          terraform {
+            backend "s3" {
+              bucket                      = "kad-products-opentofu-remote-state"
+              key                         = "${TOFU_STATE_KEY}"
+              region                      = "auto"
+              skip_credentials_validation = true
+              skip_metadata_api_check     = true
+              skip_region_validation      = true
+              skip_requesting_account_id  = true
+              skip_s3_checksum            = true
+              use_path_style              = true
+              access_key                  = "${TOFU_BACKEND_ACCESS_KEY}"
+              secret_key                  = "${TOFU_BACKEND_SECRET_KEY}"
+              endpoints = {
+                s3 = "https://${CF_ACCOUNT_ID}.r2.cloudflarestorage.com"
+              }
+            }
+          }
+          EOF
 
       - name: Init and Plan
         id: plan

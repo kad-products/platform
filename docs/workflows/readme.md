@@ -2,16 +2,10 @@
 
 Reusable GitHub Actions workflows for use across the KAD Products organization. Consume them with `uses: kad-products/platform/.github/workflows/<name>@main` and `secrets: inherit`.
 
-## Available workflows
+## Documentation
 
-| Workflow | Description |
-|---|---|
-| [Apply OpenTofu](./apply-open-tofu.md) | Runs OpenTofu plan and apply against a calling repo's infrastructure, using Cloudflare R2 for remote state |
-| [Plan OpenTofu](./plan-open-tofu.md) | Runs OpenTofu plan against a calling repo's infrastructure and posts the output as a PR comment |
-| [Create Release](./semantic-release.md) | Automated versioning and GitHub release creation on push to main, with a dry-run variant for pull requests |
-| [Lint Commits](./lint-commits.md) | Validates that PR commits follow the Conventional Commits format |
-| [Test OpenTofu](./test-open-tofu.md) | Runs `tofu init` and `tofu test` against a single OpenTofu module directory |
-| [Verify Changes](./verify-changes.md) | Lint and test checks intended to run together on pull requests — produces consistent job names for branch protection rulesets |
+- [Caller workflows](./caller/) — how to wire up these shared workflows in your repo's caller workflow files
+- [Shared workflows](./shared/) — reference documentation for each reusable workflow managed in this repo
 
 ## Naming conventions
 
@@ -33,4 +27,4 @@ When a workflow contains a single job, the job key matches the filename without 
 
 ### Step `id` and `name`
 
-All steps in all shared workflows should have a short name representing the step's purpose.  Step IDs are optional and should only be added when a later step needs to reference the outputs of that step. Steps that don't expose outputs should not have an ID.
+All steps in all shared workflows should have a short name representing the step's purpose. Step IDs are optional and should only be added when a later step needs to reference the outputs of that step. Steps that don't expose outputs should not have an ID.

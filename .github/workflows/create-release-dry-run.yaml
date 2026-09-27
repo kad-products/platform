@@ -49,3 +49,4 @@ jobs:
           echo '```' >> $GITHUB_STEP_SUMMARY
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REF: refs/heads/${{ github.head_ref || github.ref_name }}

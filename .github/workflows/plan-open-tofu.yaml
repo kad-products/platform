@@ -27,6 +27,8 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+    env:
+      TF_VAR_kad_workflow_automation: ${{ secrets.KAD_WORKFLOW_AUTOMATION }}
 
     steps:
       - name: Checkout

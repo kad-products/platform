@@ -64,6 +64,8 @@ jobs:
             echo "" >> /tmp/pr-comment.md
             echo "No commits found that would trigger a release." >> /tmp/pr-comment.md
           fi
+          echo "" >> /tmp/pr-comment.md
+          echo "[View job details](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID})" >> /tmp/pr-comment.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

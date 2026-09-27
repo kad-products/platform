@@ -14,25 +14,31 @@ jobs:
       packages: read
 
     steps:
-      - run: apt-get update && apt-get install -y git-lfs
+      - name: Install git-lfs
+        run: apt-get update && apt-get install -y git-lfs
 
-      - uses: actions/checkout@v7
+      - name: Checkout
+        uses: actions/checkout@v7
         with:
           lfs: true
           persist-credentials: false
 
-      - uses: pnpm/action-setup@v6
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
 
-      - uses: actions/setup-node@v7
+      - name: Set up Node
+        uses: actions/setup-node@v7
         with:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
           registry-url: 'https://npm.pkg.github.com'
 
-      - run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - run: pnpm ci:tests
+      - name: Run repo tests command
+        run: pnpm ci:tests
         env:
           HOME: /root

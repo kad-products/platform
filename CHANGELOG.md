@@ -1,3 +1,9 @@
+## [1.8.0](https://github.com/kad-products/platform/compare/v1.7.0...v1.8.0) (2026-09-27)
+
+### Features
+
+* adding a tf plan workflow and related docs ([d0a83b2](https://github.com/kad-products/platform/commit/d0a83b239dd11214fb3dffc224c342343016cb28))
+
 ## [1.7.0](https://github.com/kad-products/platform/compare/v1.6.1...v1.7.0) (2026-09-27)
 
 ### Features

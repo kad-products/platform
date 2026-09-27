@@ -54,7 +54,11 @@ jobs:
             echo "### Release Dry Run: v${NEXT_VERSION}" > /tmp/pr-comment.md
             echo "" >> /tmp/pr-comment.md
             awk '/Release note for version/{found=1; next} /^Done in/{found=0} found' \
-              /tmp/release-dry-run-clean.txt >> /tmp/pr-comment.md
+              /tmp/release-dry-run-clean.txt \
+              | sed -E \
+                  -e 's/ \(https:[^)]*\)//' \
+                  -e 's/\(\[([a-f0-9]+)\]\([^)]*\)\)/(\1)/g' \
+              >> /tmp/pr-comment.md
           else
             echo "### Release Dry Run: No release" > /tmp/pr-comment.md
             echo "" >> /tmp/pr-comment.md

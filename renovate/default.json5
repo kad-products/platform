@@ -1,0 +1,69 @@
+{
+	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
+	"extends": ["config:recommended"],
+	"customManagers": [
+		{
+			"description": "Keep biome.json $schema version in sync with @biomejs/biome package version.",
+			"customType": "regex",
+			"fileMatch": ["^biome\\.json$"],
+			"matchStrings": ["\"\\$schema\":\\s*\"https://biomejs\\.dev/schemas/(?<currentValue>[^/]+)/schema\\.json\""],
+			"depNameTemplate": "@biomejs/biome",
+			"datasourceTemplate": "npm"
+		}
+	],
+	"minimumReleaseAge": "3 days",
+	"labels": ["dependencies"],
+	"packageRules": [
+		{
+			"description": "Group and automerge non-major dependency updates. CI must pass before merge.",
+			"matchDepTypes": ["devDependencies", "dependencies"],
+			"matchUpdateTypes": ["minor", "patch"],
+			"groupName": "dependency (non-major)",
+			"automerge": true,
+			"automergeType": "pr",
+			"platformAutomerge": true
+		},
+		{
+			"description": "Automerge Node.js patch/minor updates. Node is managed via .nvmrc (nodenv manager), not package.json, so matchDepTypes does not apply.",
+			"matchPackageNames": ["node"],
+			"matchUpdateTypes": ["minor", "patch"],
+			"automerge": true,
+			"automergeType": "pr",
+			"platformAutomerge": true
+		},
+		{
+			"description": "Automerge GitHub Actions patch/minor updates. Actions use the github-actions manager, not package.json depTypes.",
+			"matchManagers": ["github-actions"],
+			"matchUpdateTypes": ["minor", "patch"],
+			"automerge": true,
+			"automergeType": "pr",
+			"platformAutomerge": true
+		},
+		{
+			"description": "Group Drizzle packages together. No automerge — migrations may be needed.",
+			"matchPackageNames": ["drizzle-orm", "drizzle-kit", "drizzle-zod", "drizzle-seed", "drizzle-mermaid-generator"],
+			"groupName": "Drizzle",
+			"automerge": false
+		},
+		{
+			"description": "Group Cloudflare packages together. No automerge — wrangler and worker types often have behaviour changes.",
+			"matchPackageNames": ["wrangler", "@cloudflare/workers-types", "@cloudflare/vite-plugin"],
+			"groupName": "Cloudflare",
+			"automerge": false
+		},
+		{
+			"description": "Group RedwoodSDK packages together.",
+			"matchPackageNames": ["rwsdk"],
+			"groupName": "RedwoodSDK",
+			"automerge": false
+		},
+		{
+			"description": "Group Playwright npm packages and Docker image together and automerge. The container image in playwright-ct.yaml and npm packages are updated in the same PR, so a passing CI check confirms they're in sync.",
+			"matchPackageNames": ["@playwright/test", "@playwright/experimental-ct-react", "mcr.microsoft.com/playwright"],
+			"groupName": "Playwright",
+			"automerge": true,
+			"automergeType": "pr",
+			"platformAutomerge": true
+		}
+	]
+}

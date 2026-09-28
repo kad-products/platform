@@ -1,3 +1,9 @@
+## [1.11.0](https://github.com/kad-products/platform/compare/v1.10.1...v1.11.0) (2026-09-28)
+
+### Features
+
+* initial renovate config ([c6bc8c2](https://github.com/kad-products/platform/commit/c6bc8c23b40be727c8e01146780bfc055e02df05))
+
 ## [1.10.1](https://github.com/kad-products/platform/compare/v1.10.0...v1.10.1) (2026-09-27)
 
 ### Bug Fixes

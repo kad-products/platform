@@ -1,3 +1,14 @@
+## [1.12.0](https://github.com/kad-products/platform/compare/v1.11.0...v1.12.0) (2026-09-29)
+
+### Features
+
+* include upgrade deps workflow ([6ba5306](https://github.com/kad-products/platform/commit/6ba5306533f990760a63fe584aeef972a4bef458))
+* initial build of a kad cli ([48a9a36](https://github.com/kad-products/platform/commit/48a9a3651d3efa9e62997087d75b829db6e264f8))
+
+### Bug Fixes
+
+* better resource name for deployment policies ([6b602b0](https://github.com/kad-products/platform/commit/6b602b0cdbfca43ccc003e7fc74379c32d77a123))
+
 ## [1.11.0](https://github.com/kad-products/platform/compare/v1.10.1...v1.11.0) (2026-09-28)
 
 ### Features

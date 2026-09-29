@@ -3,19 +3,19 @@ name: Plan OpenTofu
 on:
   workflow_call:
     inputs:
-      app_name:
+      app-name:
         description: 'Application name (first segment of the state key)'
         required: true
         type: string
-      state_type:
+      state-type:
         description: 'State category (second segment of the state key, e.g. github-config, app-deployment)'
         required: true
         type: string
-      state_name:
+      state-name:
         description: 'Specific instance within the category (third segment of the state key, e.g. setup, production)'
         required: true
         type: string
-      working_directory:
+      working-directory:
         description: 'Path to the OpenTofu root configuration within the calling repo'
         required: true
         type: string
@@ -43,12 +43,12 @@ jobs:
 
       - name: Generate backend config
         env:
-          TOFU_STATE_KEY: ${{ inputs.app_name }}/${{ inputs.state_type }}/${{ inputs.state_name }}/terraform.tfstate
+          TOFU_STATE_KEY: ${{ inputs.app-name }}/${{ inputs.state-type }}/${{ inputs.state-name }}/terraform.tfstate
           TOFU_BACKEND_ACCESS_KEY: ${{ secrets.TOFU_BACKEND_ACCESS_KEY_ID }}
           TOFU_BACKEND_SECRET_KEY: ${{ secrets.TOFU_BACKEND_SECRET_ACCESS_KEY }}
           CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          cat > "${{ inputs.working_directory }}/backend.tf" <<EOF
+          cat > "${{ inputs.working-directory }}/backend.tf" <<EOF
           terraform {
             backend "s3" {
               bucket                      = "kad-products-opentofu-remote-state"
@@ -71,7 +71,7 @@ jobs:
 
       - name: Init and Plan
         id: plan
-        working-directory: ${{ inputs.working_directory }}
+        working-directory: ${{ inputs.working-directory }}
         run: |
           tofu init -input=false
           set +o pipefail
@@ -89,9 +89,9 @@ jobs:
         if: always() && github.event_name == 'pull_request'
         uses: thollander/actions-comment-pull-request@v3
         with:
-          comment-tag: tofu-plan-${{ inputs.state_name }}
+          comment-tag: tofu-plan-${{ inputs.state-name }}
           message: |
-            ### ${{ steps.plan.outcome == 'success' && '✅' || '❌' }} OpenTofu Plan: `${{ inputs.state_name }}`
+            ### ${{ steps.plan.outcome == 'success' && '✅' || '❌' }} OpenTofu Plan: `${{ inputs.state-name }}`
 
             <details><summary>Plan output</summary>
 

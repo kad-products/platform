@@ -1,3 +1,9 @@
+## [1.12.2](https://github.com/kad-products/platform/compare/v1.12.1...v1.12.2) (2026-09-29)
+
+### Bug Fixes
+
+* provide means to authenticate to private registry ([f710c38](https://github.com/kad-products/platform/commit/f710c3870c355ac8ab5cc428914cb953fb3d9237))
+
 ## [1.12.1](https://github.com/kad-products/platform/compare/v1.12.0...v1.12.1) (2026-09-29)
 
 ### Bug Fixes

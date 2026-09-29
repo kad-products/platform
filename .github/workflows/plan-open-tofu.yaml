@@ -110,9 +110,7 @@ jobs:
           message: |
             ### Open Tofu Plan for ${{ inputs.state-type }}/${{ inputs.state-name }} Succeeded
 
-            ${{ steps.plan.outputs.summary == '' && 'ℹ️ No Changes' }}
-
-            ${{ steps.plan.outputs.summary != '' && steps.plan.outputs.summary }}
+            ${{ steps.plan.outputs.summary != '' && steps.plan.outputs.summary || 'ℹ️ No Changes' }}
 
             <details><summary>Plan output details</summary>
 

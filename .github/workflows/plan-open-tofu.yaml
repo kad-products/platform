@@ -83,6 +83,11 @@ jobs:
             cat /tmp/plan_output.txt
             echo 'PLAN_EOF'
           } >> $GITHUB_OUTPUT
+          {
+            echo 'summary<<SUMMARY_EOF'
+            grep -E "^  # .+ (will be|must be)" /tmp/plan_output.txt | sed 's/^  # /- /' || true
+            echo 'SUMMARY_EOF'
+          } >> $GITHUB_OUTPUT
           exit $PLAN_EXIT
 
       - name: Comment plan on PR
@@ -92,6 +97,8 @@ jobs:
           comment-tag: tofu-plan-${{ inputs.state-name }}
           message: |
             ### ${{ steps.plan.outcome == 'success' && '✅' || '❌' }} OpenTofu Plan: `${{ inputs.state-name }}`
+
+            ${{ steps.plan.outputs.summary != '' && steps.plan.outputs.summary || '_No resource changes_' }}
 
             <details><summary>Plan output</summary>
 

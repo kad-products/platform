@@ -14,6 +14,23 @@
 	"minimumReleaseAge": "3 days",
 	"labels": ["dependencies"],
 	"packageRules": [
+		// BIOME
+		{
+			"description": "Group @biomejs/biome major updates together, no automerge.",
+			"matchPackageNames": ["@biomejs/biome"],
+			"matchUpdateTypes": ["major"],
+			"groupName": "Biome",
+			"automerge": false
+		},
+		{
+			"description": "Group @biomejs/biome npm package and biome.json schema version together.",
+			"matchPackageNames": ["@biomejs/biome"],
+			"matchUpdateTypes": ["minor", "patch"],
+			"groupName": "Biome",
+			"automerge": true,
+			"automergeType": "pr",
+			"platformAutomerge": true
+		},
 		{
 			"description": "Group and automerge non-major dependency updates. CI must pass before merge.",
 			"matchDepTypes": ["devDependencies", "dependencies"],
@@ -57,9 +74,18 @@
 			"groupName": "RedwoodSDK",
 			"automerge": false
 		},
+		// PLAYWRIGHT
+		{
+			"description": "Group Playwright major updates together. No automerge — major versions often require test updates.",
+			"matchPackageNames": ["@playwright/test", "@playwright/experimental-ct-react", "mcr.microsoft.com/playwright"],
+			"matchUpdateTypes": ["major"],
+			"groupName": "Playwright",
+			"automerge": false
+		},
 		{
 			"description": "Group Playwright npm packages and Docker image together and automerge. The container image in playwright-ct.yaml and npm packages are updated in the same PR, so a passing CI check confirms they're in sync.",
 			"matchPackageNames": ["@playwright/test", "@playwright/experimental-ct-react", "mcr.microsoft.com/playwright"],
+			"matchUpdateTypes": ["minor", "patch"],
 			"groupName": "Playwright",
 			"automerge": true,
 			"automergeType": "pr",

@@ -1,3 +1,16 @@
+## [1.14.0](https://github.com/kad-products/platform/compare/v1.13.1...v1.14.0) (2026-09-29)
+
+### Features
+
+* add github repo config tf ([1b41453](https://github.com/kad-products/platform/commit/1b41453dcdbcb80b89f38df5f5d76325da27918d))
+
+### Bug Fixes
+
+* clearer plan comments in PR ([c747a29](https://github.com/kad-products/platform/commit/c747a29874cd5a640af988cdc0e1b4615fb3e6c2))
+* i like checkmarks ([51364bd](https://github.com/kad-products/platform/commit/51364bdbffc3105fb02db29dd742136c759f55dd))
+* include state type in PR comments ([ff09b6d](https://github.com/kad-products/platform/commit/ff09b6d1636c720e108d2c7d41aa35e8d90a8bbe))
+* plan comment for success and no changes ([c09a4da](https://github.com/kad-products/platform/commit/c09a4da13dec1db2af5fde1e276dea4dd63705d1))
+
 ## [1.13.1](https://github.com/kad-products/platform/compare/v1.13.0...v1.13.1) (2026-09-29)
 
 ### Bug Fixes

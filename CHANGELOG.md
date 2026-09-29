@@ -1,3 +1,9 @@
+## [1.14.1](https://github.com/kad-products/platform/compare/v1.14.0...v1.14.1) (2026-09-29)
+
+### Bug Fixes
+
+* import github and provide repo name var ([efb32b3](https://github.com/kad-products/platform/commit/efb32b386b3ec0b9a7f5ac9975d6b0a25f3d8538))
+
 ## [1.14.0](https://github.com/kad-products/platform/compare/v1.13.1...v1.14.0) (2026-09-29)
 
 ### Features

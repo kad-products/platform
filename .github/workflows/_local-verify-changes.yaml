@@ -17,11 +17,29 @@ jobs:
     permissions:
       contents: read
     with:
-      working_directory: open-tofu/modules/github-environment
+      working-directory: open-tofu/modules/github-environment
 
   test-github-repo:
     uses: ./.github/workflows/test-open-tofu.yaml
     permissions:
       contents: read
     with:
-      working_directory: open-tofu/modules/github-repo
+      working-directory: open-tofu/modules/github-repo
+
+  test-cli:
+    uses: ./.github/workflows/run-tests.yaml
+    permissions:
+      contents: read
+      packages: read
+    secrets: inherit
+    with:
+      working-directory: ./cli
+
+  lint-cli:
+    uses: ./.github/workflows/lint-code.yaml
+    permissions:
+      contents: read
+      packages: read
+    secrets: inherit
+    with:
+      working-directory: ./cli

@@ -2,6 +2,11 @@ name: Lint Code
 
 on:
   workflow_call:
+    inputs:
+      working-directory:
+        type: string
+        required: false
+        default: '.'
 
 jobs:
   lint-code:
@@ -32,4 +37,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run repo lint command
+        working-directory: ${{ inputs.working-directory }}
         run: pnpm ci:lint
+        

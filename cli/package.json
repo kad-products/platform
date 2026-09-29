@@ -1,14 +1,20 @@
 {
 	"name": "@kad-products/cli",
 	"version": "0.0.1",
-	"private": true,
+	"files": [
+		"dist",
+		"README.md"
+	],
 	"bin": {
 		"kad": "./dist/cli.js"
 	},
 	"scripts": {
 		"build": "tsup",
-		"ci:tests": "vitest run",
+		"ci:tests": "vitest run && pnpm run build",
+		"ci:lint": "pnpm run types:check",
 		"dev": "tsx src/cli.ts",
+		"prepublishOnly": "pnpm build",
+		"test": "vitest",
 		"types:check": "tsc --noEmit"
 	},
 	"dependencies": {
@@ -24,5 +30,8 @@
 		"tsx": "^4.19.0",
 		"typescript": "^5.7.0",
 		"vitest": "^3.0.0"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
 	}
 }

@@ -1,3 +1,14 @@
+## [1.13.0](https://github.com/kad-products/platform/compare/v1.12.2...v1.13.0) (2026-09-29)
+
+### Features
+
+* enable publishing of cli package ([52c6443](https://github.com/kad-products/platform/commit/52c64439bc05032496bbec2e83606b81f7792edd))
+
+### Bug Fixes
+
+* clean up renovate packageRules ([462ed65](https://github.com/kad-products/platform/commit/462ed655b87c0842308fec152e9a5fb247c70e47))
+* workflow inputs should always be kebab case ([2d92170](https://github.com/kad-products/platform/commit/2d92170893917d7e9fa01c493253b660e342cd43))
+
 ## [1.12.2](https://github.com/kad-products/platform/compare/v1.12.1...v1.12.2) (2026-09-29)
 
 ### Bug Fixes

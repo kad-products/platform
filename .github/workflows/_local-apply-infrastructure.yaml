@@ -1,0 +1,15 @@
+name: Apply Infrastructure
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-github-config:
+    uses: ./.github/workflows/apply-open-tofu.yaml
+    with:
+      app-name: ${{github.event.repository.name}}
+      state-type: github
+      state-name: setup
+      working-directory: infra/github
+    secrets: inherit

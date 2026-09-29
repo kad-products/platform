@@ -43,3 +43,15 @@ jobs:
     secrets: inherit
     with:
       working-directory: ./cli
+
+  plan-github-setup:
+    uses: ./.github/workflows/plan-open-tofu.yaml
+    with:
+      app-name: ${{github.event.repository.name}}
+      state-type: github
+      state-name: setup
+      working-directory: infra/github
+    permissions:
+      contents: read
+      pull-requests: write
+    secrets: inherit    

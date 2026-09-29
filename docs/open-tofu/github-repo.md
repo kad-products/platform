@@ -30,5 +30,11 @@ Pin `ref` to a release tag in production to avoid unexpected changes.
 |---|---|---|---|---|
 | `repo_name` | `string` | Yes | — | Repository slug |
 | `repo_description` | `string` | Yes | — | Description shown in GitHub's UI |
-| `required_checks` | `set(string)` | Yes | — | Status check names that must pass before merging to `main`. At least one required. |
+| `required_checks` | `set(string)` | Yes | — | Status check names that must pass before merging to `main`. At least one required.<sup>*</sup> |
 | `is_product` | `bool` | No | `false` | When `true`, sets `homepage_url` to the KAD Products product page |
+
+<sup>*</sup> The way GitHub matches check names to the required checks is a little odd and hard to decipher from the docs and UI.  To help avoid endless guess-and-check calling the GitHub API on a specific SHA can help get the definitive name.  Run this on an existing SHA that has had a check already run.  
+
+```sh
+gh api repos/kad-products/<repo-name>/commits/<sha>/check-runs --jq '.check_runs[] | .name'
+```

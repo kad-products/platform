@@ -1,0 +1,21 @@
+name: Upgrade Dependencies
+
+on:
+  workflow_call:      
+
+jobs:
+  upgrade-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: renovatebot/github-action@v46.3.5
+        with:
+          token: ${{ secrets.KAD_WORKFLOW_AUTOMATION }}
+        env:
+          RENOVATE_REPOSITORIES: ${{ github.repository }}
+          RENOVATE_ONBOARDING: "false"
+          RENOVATE_GIT_AUTHOR: "Renovate Bot <renovate[bot]@users.noreply.github.com>"
+          RENOVATE_CI: true
+          LOG_LEVEL: debug
+          CI: "true"

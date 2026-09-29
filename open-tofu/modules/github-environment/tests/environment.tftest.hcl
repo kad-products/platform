@@ -31,7 +31,7 @@ run "valid_environment_name" {
   }
 
   assert {
-    condition     = github_repository_environment_deployment_policy.staging_semver_tags.tag_pattern == "v*"
+    condition     = github_repository_environment_deployment_policy.semver_tags.tag_pattern == "v*"
     error_message = "Expected tag pattern to be 'v*'"
   }
 }

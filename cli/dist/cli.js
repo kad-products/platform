@@ -47,6 +47,7 @@ __export(view_state_exports, {
   builder: () => builder,
   command: () => command,
   describe: () => describe,
+  getAppName: () => getAppName,
   handler: () => handler
 });
 var import_node_child_process = require("child_process");
@@ -77,9 +78,7 @@ function createR2Client() {
 }
 async function listStateFiles(client, appName) {
   const prefix = `${appName}/`;
-  const response = await client.send(
-    new import_client_s3.ListObjectsV2Command({ Bucket: BUCKET, Prefix: prefix })
-  );
+  const response = await client.send(new import_client_s3.ListObjectsV2Command({ Bucket: BUCKET, Prefix: prefix }));
   return (response.Contents ?? []).filter((obj) => obj.Key?.endsWith("/terraform.tfstate")).map((obj) => {
     const key = obj.Key;
     const label = key.slice(prefix.length).replace("/terraform.tfstate", "");

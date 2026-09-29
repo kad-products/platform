@@ -1,3 +1,9 @@
+## [1.12.1](https://github.com/kad-products/platform/compare/v1.12.0...v1.12.1) (2026-09-29)
+
+### Bug Fixes
+
+* renovate config properly group biome changes ([982f49f](https://github.com/kad-products/platform/commit/982f49f99fa1e365838acb1b58032b67e41d52fd))
+
 ## [1.12.0](https://github.com/kad-products/platform/compare/v1.11.0...v1.12.0) (2026-09-29)
 
 ### Features

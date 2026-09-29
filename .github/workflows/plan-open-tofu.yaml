@@ -108,7 +108,7 @@ jobs:
         with:
           comment-tag: tofu-plan-${{ inputs.state-type }}-${{ inputs.state-name }}
           message: |
-            ### Open Tofu Plan for ${{ inputs.state-type }}/${{ inputs.state-name }} Succeeded
+            ### ✅ Open Tofu Plan for ${{ inputs.state-type }}/${{ inputs.state-name }} Succeeded
 
             ${{ steps.plan.outputs.summary != '' && steps.plan.outputs.summary || 'ℹ️ No Changes' }}
 

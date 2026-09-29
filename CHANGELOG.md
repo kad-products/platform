@@ -1,3 +1,9 @@
+## [1.13.1](https://github.com/kad-products/platform/compare/v1.13.0...v1.13.1) (2026-09-29)
+
+### Bug Fixes
+
+* better tofu plan summary ([c321bc8](https://github.com/kad-products/platform/commit/c321bc81efe7f76e70ab6c07d2ca5310260af503))
+
 ## [1.13.0](https://github.com/kad-products/platform/compare/v1.12.2...v1.13.0) (2026-09-29)
 
 ### Features

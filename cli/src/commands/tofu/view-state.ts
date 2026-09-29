@@ -22,7 +22,7 @@ export function builder(yargs: Argv): Argv {
 	});
 }
 
-function getAppName(override?: string): string {
+export function getAppName(override?: string): string {
 	if (override) return override;
 	const remote = execSync('git remote get-url origin', { encoding: 'utf8' }).trim();
 	const match = remote.match(/[/:]([^/]+?)(?:\.git)?$/);

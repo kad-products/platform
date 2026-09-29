@@ -90,17 +90,31 @@ jobs:
           } >> $GITHUB_OUTPUT
           exit $PLAN_EXIT
 
-      - name: Comment plan on PR
-        if: always() && github.event_name == 'pull_request'
+      - name: Comment plan failure on PR
+        if: steps.plan.outcome != 'success' && github.event_name == 'pull_request'
         uses: thollander/actions-comment-pull-request@v3
         with:
           comment-tag: tofu-plan-${{ inputs.state-name }}
           message: |
-            ### ${{ steps.plan.outcome == 'success' && '✅' || '❌' }} OpenTofu Plan: `${{ inputs.state-name }}`
+            ### ❌ Open Tofu Plan Failed
 
-            ${{ steps.plan.outputs.summary != '' && steps.plan.outputs.summary || '_No resource changes_' }}
+            ```
+            ${{ steps.plan.outputs.output }}
+            ```
 
-            <details><summary>Plan output</summary>
+      - name: Comment plan success on PR
+        if: steps.plan.outcome == 'success' && github.event_name == 'pull_request'
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          comment-tag: tofu-plan-${{ inputs.state-name }}
+          message: |
+            ### Open Tofu Plan Succeeded
+
+            ${{ steps.plan.outputs.summary == '' && 'ℹ️ No Changes' }}
+
+            ${{ steps.plan.outputs.summary != '' && steps.plan.outputs.summary }}
+
+            <details><summary>Plan output details</summary>
 
             ```
             ${{ steps.plan.outputs.output }}

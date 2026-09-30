@@ -1,3 +1,9 @@
+## [1.15.0](https://github.com/kad-products/platform/compare/v1.14.1...v1.15.0) (2026-09-30)
+
+### Features
+
+* give repo access to the workflow secret ([33b9e35](https://github.com/kad-products/platform/commit/33b9e357c771847caf23fe3662a9242b98bbf814))
+
 ## [1.14.1](https://github.com/kad-products/platform/compare/v1.14.0...v1.14.1) (2026-09-29)
 
 ### Bug Fixes

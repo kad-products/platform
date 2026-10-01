@@ -1,3 +1,9 @@
+## [1.15.3](https://github.com/kad-products/platform/compare/v1.15.2...v1.15.3) (2026-10-01)
+
+### Bug Fixes
+
+* give deploy jobs perms to read packages ([157fca3](https://github.com/kad-products/platform/commit/157fca31147ad91a16b133bcd049655c5dbb9020))
+
 ## [1.15.2](https://github.com/kad-products/platform/compare/v1.15.1...v1.15.2) (2026-10-01)
 
 ### Bug Fixes

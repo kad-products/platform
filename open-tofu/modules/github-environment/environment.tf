@@ -3,7 +3,7 @@ resource "github_repository_environment" "environment" {
   repository  = var.repo_name
 
   reviewers {
-    users = [for u in data.github_user.org_admins : u.id]
+    users = [for k, u in data.github_user.org_admins : u.id if var.environment_name == "production" || k == "arsdehnel"]
   }
 
   deployment_branch_policy {

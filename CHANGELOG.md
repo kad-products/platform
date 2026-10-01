@@ -1,3 +1,9 @@
+## [1.15.2](https://github.com/kad-products/platform/compare/v1.15.1...v1.15.2) (2026-10-01)
+
+### Bug Fixes
+
+* staging needs no reviewers ([3822aae](https://github.com/kad-products/platform/commit/3822aae7964783a909abf0441d3b15485646e9d5))
+
 ## [1.15.1](https://github.com/kad-products/platform/compare/v1.15.0...v1.15.1) (2026-10-01)
 
 ### Bug Fixes

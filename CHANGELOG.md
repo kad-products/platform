@@ -1,3 +1,9 @@
+## [1.15.4](https://github.com/kad-products/platform/compare/v1.15.3...v1.15.4) (2026-10-01)
+
+### Bug Fixes
+
+* integration has no reviews, not staging ([3e74f4d](https://github.com/kad-products/platform/commit/3e74f4de636a5bbff35f8838511180472e7b8ff1))
+
 ## [1.15.3](https://github.com/kad-products/platform/compare/v1.15.2...v1.15.3) (2026-10-01)
 
 ### Bug Fixes

@@ -1,3 +1,9 @@
+## [1.15.5](https://github.com/kad-products/platform/compare/v1.15.4...v1.15.5) (2026-10-01)
+
+### Bug Fixes
+
+* deploy settings for ci and gh pkgs ([680be7d](https://github.com/kad-products/platform/commit/680be7dc179c9c092dc6d35a3fc60c1266c7928c))
+
 ## [1.15.4](https://github.com/kad-products/platform/compare/v1.15.3...v1.15.4) (2026-10-01)
 
 ### Bug Fixes

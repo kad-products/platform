@@ -1,3 +1,9 @@
+## [1.15.1](https://github.com/kad-products/platform/compare/v1.15.0...v1.15.1) (2026-10-01)
+
+### Bug Fixes
+
+* only adam as reviewer for lower environments ([55896f6](https://github.com/kad-products/platform/commit/55896f630389a3a32f387074ba4cdd0bc2770ca1))
+
 ## [1.15.0](https://github.com/kad-products/platform/compare/v1.14.1...v1.15.0) (2026-09-30)
 
 ### Features

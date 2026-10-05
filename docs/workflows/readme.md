@@ -28,3 +28,19 @@ When a workflow contains a single job, the job key matches the filename without 
 ### Step `id` and `name`
 
 All steps in all shared workflows should have a short name representing the step's purpose. Step IDs are optional and should only be added when a later step needs to reference the outputs of that step. Steps that don't expose outputs should not have an ID.
+
+## Secrets
+
+Org secrets follow the `KAD_` naming convention defined in [docs/secrets/](../secrets/readme.md). Workflow authors are responsible for mapping these to the env var names that consuming tools expect.
+
+Map secrets to tool-expected names in the job or step `env` block:
+
+```yaml
+env:
+  CLOUDFLARE_API_TOKEN: ${{ secrets.KAD_CLOUDFLARE_TOKEN }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.KAD_CLOUDFLARE_ACCOUNT_ID }}
+```
+
+This keeps the secret name stable regardless of which tool consumes it. If a workflow switches deploy tooling, only the env var mapping changes.
+
+Most shared workflows in this repo handle secrets mapping internally. Callers use `secrets: inherit` and do not need to map secrets themselves.

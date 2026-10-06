@@ -22,7 +22,6 @@ on:
 
 jobs:
   apply-open-tofu:
-    name: Apply
     runs-on: ubuntu-latest
     environment: ${{ inputs.state-name }}
     permissions:

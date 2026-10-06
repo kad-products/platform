@@ -25,6 +25,8 @@ The `name` field is the title-case equivalent of the filename, with hyphens repl
 
 When a workflow contains a single job, the job key matches the filename without the extension (e.g. `create-release`, `create-release-dry-run`). When there are two or more jobs, each key is kebab-case and describes what makes that job distinct within the context of the overall workflow.
 
+Jobs in shared workflows must not have a `name` field. GitHub derives the check run name from the job key — the string used in branch protection `required_checks` rules — and a `name` field overrides it, making the check run name diverge from the job key. This means any change to the display name silently breaks existing branch protection rules. Omitting `name` keeps the check run name stable and equal to the job key.
+
 ### Step `id` and `name`
 
 All steps in all shared workflows should have a short name representing the step's purpose. Step IDs are optional and should only be added when a later step needs to reference the outputs of that step. Steps that don't expose outputs should not have an ID.

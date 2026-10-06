@@ -1,3 +1,17 @@
+## [1.16.0](https://github.com/kad-products/platform/compare/v1.15.5...v1.16.0) (2026-10-06)
+
+### Features
+
+* automate initial pre-tofu resources ([7d281ba](https://github.com/kad-products/platform/commit/7d281baf3f92972986cb881f455a253a752b8bd3))
+
+### Bug Fixes
+
+* ignore and remove dist of cli ([3282413](https://github.com/kad-products/platform/commit/3282413f501578261e23516d3e55702c345885d4))
+
+### Code Refactoring
+
+* align to new secret naming system ([9d79ad6](https://github.com/kad-products/platform/commit/9d79ad64cc297334c04d24f70ad563f257aee660))
+
 ## [1.15.5](https://github.com/kad-products/platform/compare/v1.15.4...v1.15.5) (2026-10-01)
 
 ### Bug Fixes

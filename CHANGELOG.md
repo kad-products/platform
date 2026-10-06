@@ -1,3 +1,10 @@
+## [1.16.2](https://github.com/kad-products/platform/compare/v1.16.1...v1.16.2) (2026-10-06)
+
+### Bug Fixes
+
+* align secrets to usage patterns ([28c4e65](https://github.com/kad-products/platform/commit/28c4e6530bfa10a835150785da67df2540734264))
+* use latest repo module ([21d7bce](https://github.com/kad-products/platform/commit/21d7bce7fb63ac3744bccf69153262487279d73f))
+
 ## [1.16.1](https://github.com/kad-products/platform/compare/v1.16.0...v1.16.1) (2026-10-06)
 
 ### Bug Fixes

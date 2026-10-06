@@ -1,3 +1,9 @@
+## [1.18.0](https://github.com/kad-products/platform/compare/v1.17.0...v1.18.0) (2026-10-06)
+
+### Features
+
+* add more perms to allow the cf token to actually deploy things ([3213841](https://github.com/kad-products/platform/commit/321384191256e0648e73510f0bda9108a7d50aa9))
+
 ## [1.17.0](https://github.com/kad-products/platform/compare/v1.16.3...v1.17.0) (2026-10-06)
 
 ### Features

@@ -9,6 +9,8 @@ RESULT=$(curl -sf \
   -H "Authorization: Bearer ${API_TOKEN}" \
   "https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/tokens/permission_groups")
 
+echo "RESULT: $RESULT" >> debug-cf-perm-groups.log
+
 R2_READ_ID=$(echo "$RESULT" | jq -r '.result[] | select(.name == "Workers R2 Storage Bucket Item Read") | .id')
 R2_WRITE_ID=$(echo "$RESULT" | jq -r '.result[] | select(.name == "Workers R2 Storage Bucket Item Write") | .id')
 

@@ -3,13 +3,13 @@ import { GetObjectCommand, ListObjectsV2Command, S3Client } from '@aws-sdk/clien
 const BUCKET = 'kad-products-opentofu-remote-state';
 
 export function createR2Client(): S3Client {
-	const accessKeyId = process.env.TOFU_BACKEND_ACCESS_KEY;
-	const secretAccessKey = process.env.TOFU_BACKEND_SECRET_KEY;
+	const accessKeyId = process.env.KAD_CF_R2_ACCESS_KEY_ID;
+	const secretAccessKey = process.env.KAD_CF_R2_SECRET_KEY;
 	const accountId = process.env.CF_ACCOUNT_ID;
 
 	const missing = [
-		!accessKeyId && 'TOFU_BACKEND_ACCESS_KEY',
-		!secretAccessKey && 'TOFU_BACKEND_SECRET_KEY',
+		!accessKeyId && 'KAD_CF_R2_ACCESS_KEY_ID',
+		!secretAccessKey && 'KAD_CF_R2_SECRET_KEY',
 		!accountId && 'CF_ACCOUNT_ID',
 	].filter(Boolean) as string[];
 

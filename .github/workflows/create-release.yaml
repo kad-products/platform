@@ -63,7 +63,7 @@ jobs:
               block_creations: .block_creations.enabled
             }' > /tmp/branch-protection.json
         env:
-          GITHUB_TOKEN: ${{ secrets.KAD_WORKFLOW_AUTOMATION }}
+          GITHUB_TOKEN: ${{ secrets.KAD_GITHUB_TOKEN }}
 
       - name: Disable branch protection
         run: |
@@ -73,7 +73,7 @@ jobs:
             https://api.github.com/repos/${{ github.repository }}/branches/${{ github.ref_name }}/protection \
             -d '{"restrictions":null,"required_status_checks":null,"enforce_admins":false,"required_pull_request_reviews":null}'
         env:
-          GITHUB_TOKEN: ${{ secrets.KAD_WORKFLOW_AUTOMATION }}
+          GITHUB_TOKEN: ${{ secrets.KAD_GITHUB_TOKEN }}
 
       - name: Create release
         run: |
@@ -88,7 +88,7 @@ jobs:
             --package=conventional-changelog-conventionalcommits@9 \
             semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.KAD_WORKFLOW_AUTOMATION }}
+          GITHUB_TOKEN: ${{ secrets.KAD_GITHUB_TOKEN }}
           GIT_AUTHOR_NAME: semantic-release-bot
           GIT_AUTHOR_EMAIL: semantic-release-bot@users.noreply.github.com
           GIT_COMMITTER_NAME: semantic-release-bot
@@ -104,4 +104,4 @@ jobs:
             https://api.github.com/repos/${{ github.repository }}/branches/${{ github.ref_name }}/protection \
             -d @/tmp/branch-protection.json
         env:
-          GITHUB_TOKEN: ${{ secrets.KAD_WORKFLOW_AUTOMATION }}
+          GITHUB_TOKEN: ${{ secrets.KAD_GITHUB_TOKEN }}

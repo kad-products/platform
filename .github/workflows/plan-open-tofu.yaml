@@ -28,7 +28,7 @@ jobs:
       contents: read
       pull-requests: write
     env:
-      TF_VAR_kad_workflow_automation: ${{ secrets.KAD_WORKFLOW_AUTOMATION }}
+      TF_VAR_kad_github_token: ${{ secrets.KAD_GITHUB_TOKEN }}
       TF_VAR_repo_name: ${{github.event.repository.name}}
 
     steps:
@@ -45,9 +45,9 @@ jobs:
       - name: Generate backend config
         env:
           TOFU_STATE_KEY: ${{ inputs.app-name }}/${{ inputs.state-type }}/${{ inputs.state-name }}/terraform.tfstate
-          TOFU_BACKEND_ACCESS_KEY: ${{ secrets.TOFU_BACKEND_ACCESS_KEY_ID }}
-          TOFU_BACKEND_SECRET_KEY: ${{ secrets.TOFU_BACKEND_SECRET_ACCESS_KEY }}
-          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          KAD_CF_R2_ACCESS_KEY_ID: ${{ secrets.KAD_CF_R2_ACCESS_KEY_ID }}
+          KAD_CF_R2_SECRET_KEY: ${{ secrets.KAD_CF_R2_SECRET_KEY }}
+          CF_ACCOUNT_ID: ${{ secrets.KAD_CLOUDFLARE_ACCOUNT_ID }}
         run: |
           cat > "${{ inputs.working-directory }}/backend.tf" <<EOF
           terraform {
@@ -61,8 +61,8 @@ jobs:
               skip_requesting_account_id  = true
               skip_s3_checksum            = true
               use_path_style              = true
-              access_key                  = "${TOFU_BACKEND_ACCESS_KEY}"
-              secret_key                  = "${TOFU_BACKEND_SECRET_KEY}"
+              access_key                  = "${KAD_CF_R2_ACCESS_KEY_ID}"
+              secret_key                  = "${KAD_CF_R2_SECRET_KEY}"
               endpoints = {
                 s3 = "https://${CF_ACCOUNT_ID}.r2.cloudflarestorage.com"
               }

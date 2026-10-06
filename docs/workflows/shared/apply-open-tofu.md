@@ -10,31 +10,31 @@ The `state_name` input is also used as the GitHub Actions environment for the jo
 
 ## Inputs
 
-| Input | Required | Description |
-|---|---|---|
-| `app_name` | Yes | Application name — first segment of the state key |
-| `state_type` | Yes | State category — second segment of the state key (e.g. `github-config`, `app-deployment`) |
-| `state_name` | Yes | Instance within the category — third segment of the state key and the GitHub Actions environment (e.g. `setup`, `production`) |
-| `working_directory` | Yes | Path to the OpenTofu root configuration within the calling repo |
+| Input               | Required | Description                                                                                                                   |
+| ------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `app_name`          | Yes      | Application name — first segment of the state key                                                                             |
+| `state_type`        | Yes      | State category — second segment of the state key (e.g. `github-config`, `app-deployment`)                                     |
+| `state_name`        | Yes      | Instance within the category — third segment of the state key and the GitHub Actions environment (e.g. `setup`, `production`) |
+| `working_directory` | Yes      | Path to the OpenTofu root configuration within the calling repo                                                               |
 
 ## Secrets
 
-| Secret | Provisioned by |
-|---|---|
-| `TOFU_BACKEND_ACCESS_KEY_ID` | `open-tofu/state-storage` module |
+| Secret                           | Provisioned by                   |
+| -------------------------------- | -------------------------------- |
+| `KAD_CF_R2_ACCESS_KEY_ID_ID`     | `open-tofu/state-storage` module |
 | `TOFU_BACKEND_SECRET_ACCESS_KEY` | `open-tofu/state-storage` module |
-| `CLOUDFLARE_ACCOUNT_ID` | Set manually as an org secret |
+| `CLOUDFLARE_ACCOUNT_ID`          | Set manually as an org secret    |
 
 These are read directly from organization secrets — callers do not need to map them.
 
 ## Terraform variables
 
-The workflow automatically exports `KAD_WORKFLOW_AUTOMATION` as `TF_VAR_kad_workflow_automation`, making it available to OpenTofu configurations as an input variable without any caller configuration.
+The workflow automatically exports `KAD_GITHUB_TOKEN` as `TF_VAR_kad_github_token`, making it available to OpenTofu configurations as an input variable without any caller configuration.
 
 GitHub Actions does not support dynamic secret lookup at runtime — `${{ secrets[variable] }}` is not valid syntax — so any additional secrets needed as Terraform variables must be mapped explicitly. There is no mechanism for this today; see [#34](https://github.com/kad-products/platform/issues/34) for a planned `extra_tf_vars` input.
 
 ## Permissions
 
-| Permission | Level |
-|---|---|
+| Permission | Level  |
+| ---------- | ------ |
 | `contents` | `read` |

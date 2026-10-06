@@ -6,7 +6,7 @@ Two reusable workflows for automating versioning and releases with [semantic-rel
 
 Runs semantic-release on pushes to the main branch. Handles branch protection automatically: saves the current rules, disables protection so semantic-release can push the version commit and tag, then restores the original rules whether the release succeeds or fails.
 
-Uses the `KAD_WORKFLOW_AUTOMATION` token (passed via `secrets: inherit`) rather than the default `GITHUB_TOKEN` so that the release commit triggers downstream workflows.
+Uses the `KAD_GITHUB_TOKEN` token (passed via `secrets: inherit`) rather than the default `GITHUB_TOKEN` so that the release commit triggers downstream workflows.
 
 ### Usage
 
@@ -31,9 +31,9 @@ jobs:
 
 ### Required secrets
 
-| Secret | Purpose |
-|---|---|
-| `KAD_WORKFLOW_AUTOMATION` | PAT with repo and workflow scopes, used to push the release commit/tag and manage branch protection |
+| Secret             | Purpose                                                                                             |
+| ------------------ | --------------------------------------------------------------------------------------------------- |
+| `KAD_GITHUB_TOKEN` | PAT with repo and workflow scopes, used to push the release commit/tag and manage branch protection |
 
 ---
 

@@ -3,6 +3,8 @@ node_modules/
 
 *.log
 
+dist/
+
 # Terraform files
 .terraform/
 .terraform.tfstate.lock.info

@@ -1,3 +1,9 @@
+## [1.16.3](https://github.com/kad-products/platform/compare/v1.16.2...v1.16.3) (2026-10-06)
+
+### Bug Fixes
+
+* use latest tag for gh repo module ([dcab1d2](https://github.com/kad-products/platform/commit/dcab1d280372e5c9e9682bd3a8731bbe833beaf5))
+
 ## [1.16.2](https://github.com/kad-products/platform/compare/v1.16.1...v1.16.2) (2026-10-06)
 
 ### Bug Fixes

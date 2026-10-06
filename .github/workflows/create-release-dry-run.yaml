@@ -50,10 +50,12 @@ jobs:
             --package=conventional-changelog-conventionalcommits@9 \
             semantic-release --dry-run --no-ci 2>&1 | tee /tmp/release-dry-run.txt
           sed 's/\x1b\[[0-9;]*m//g' /tmp/release-dry-run.txt > /tmp/release-dry-run-clean.txt
-          echo "## Release Dry Run" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          cat /tmp/release-dry-run-clean.txt >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
+          {
+            echo "## Release Dry Run"
+            echo '```'
+            cat /tmp/release-dry-run-clean.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
           NEXT_VERSION=$(grep 'The next release version is' /tmp/release-dry-run-clean.txt | awk '{print $NF}' || true)
           if [ -n "$NEXT_VERSION" ]; then
             echo "### Release Dry Run: v${NEXT_VERSION}" > /tmp/pr-comment.md

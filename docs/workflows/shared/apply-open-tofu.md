@@ -1,5 +1,9 @@
 # apply-open-tofu.yaml
 
+## Check name
+
+`apply-open-tofu`
+
 Runs `tofu init`, `tofu plan`, and `tofu apply` against a single OpenTofu configuration directory, using KAD Products' shared Cloudflare R2 bucket as the remote backend for state storage.
 
 The plan is saved and passed directly to apply, so the apply step executes exactly what was planned. This also sets up a clean split point for adding an approval gate between plan and apply in the future — that would require splitting this into two jobs with artifact upload/download, but no changes to the caller workflow.

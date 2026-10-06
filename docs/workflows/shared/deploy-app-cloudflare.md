@@ -1,5 +1,13 @@
 # deploy-app-cloudflare.yaml
 
+## Check names
+
+| Job | Check name |
+|---|---|
+| Integration | `deploy-integration` |
+| Staging | `deploy-staging` |
+| Production | `deploy-production` |
+
 Deploys a Cloudflare application to three environments in sequence: integration, then staging, then production. Each stage uses its own GitHub Actions environment, which can be configured with approval gates.
 
 Runs the repo's `deploy` script via pnpm, passing `CLOUDFLARE_ENV` and `VITE_APP_VERSION` as environment variables.

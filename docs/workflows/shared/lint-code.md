@@ -2,6 +2,10 @@
 
 Runs the calling repo's `ci:lint` script via pnpm.
 
+## Check name
+
+`lint-code`
+
 ## Inputs
 
 None.

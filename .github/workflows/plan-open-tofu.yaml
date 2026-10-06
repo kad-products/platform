@@ -22,7 +22,6 @@ on:
 
 jobs:
   plan-open-tofu:
-    name: Plan
     runs-on: ubuntu-latest
     permissions:
       contents: read

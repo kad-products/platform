@@ -10,7 +10,6 @@ on:
 
 jobs:
   deploy-integration:
-    name: Deploy to Integration
     runs-on: ubuntu-latest
     environment: integration
     permissions:
@@ -48,7 +47,6 @@ jobs:
         run: pnpm run deploy
 
   deploy-staging:
-    name: Deploy to Staging
     runs-on: ubuntu-latest
     needs: deploy-integration
     environment: staging
@@ -87,7 +85,6 @@ jobs:
         run: pnpm run deploy
 
   deploy-production:
-    name: Deploy to Production
     runs-on: ubuntu-latest
     needs: deploy-staging
     environment: production

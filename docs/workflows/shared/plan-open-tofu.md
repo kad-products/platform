@@ -1,5 +1,9 @@
 # plan-open-tofu.yaml
 
+## Check name
+
+`plan-open-tofu`
+
 Runs `tofu init` and `tofu plan` against a single OpenTofu configuration directory and posts the output as a comment on the PR.
 
 If a comment for the same `state_name` already exists (e.g. from a previous commit on the branch), it is updated in place rather than creating a new one.

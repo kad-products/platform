@@ -1,3 +1,13 @@
+## [1.19.0](https://github.com/kad-products/platform/compare/v1.18.0...v1.19.0) (2026-10-06)
+
+### Features
+
+* increase rules and boundaries on the default branch ([fa7e7b3](https://github.com/kad-products/platform/commit/fa7e7b3076892620db330fc321473c12d0fa3958))
+
+### Bug Fixes
+
+* have this repo use the repo module via local pathing ([c8c5263](https://github.com/kad-products/platform/commit/c8c5263fe52c5dc485c8fb0b52a0ec7fe46455e5))
+
 ## [1.18.0](https://github.com/kad-products/platform/compare/v1.17.0...v1.18.0) (2026-10-06)
 
 ### Features

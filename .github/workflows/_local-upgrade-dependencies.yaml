@@ -1,0 +1,14 @@
+name: Upgrade Dependencies
+
+on:
+  schedule:
+    # Weekly on Tuesday at 02:00 UTC
+    - cron: '0 2 * * 2'
+  push:
+    branches:
+      - main
+
+jobs:
+  upgrade-dependencies:
+    uses: ./.github/workflows/upgrade-dependencies.yaml
+    secrets: inherit

@@ -1,5 +1,5 @@
 module "repo" {
-  source = "github.com/kad-products/platform//open-tofu/modules/github-repo?ref=v1.16.1"
+  source = "github.com/kad-products/platform//open-tofu/modules/github-repo?ref=v1.16.2"
 
   repo_name        = var.repo_name
   repo_description = "KAD Platform Automation"

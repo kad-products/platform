@@ -23,8 +23,8 @@ resource "github_repository_ruleset" "main" {
     pull_request {
       allowed_merge_methods             = ["merge"]
       dismiss_stale_reviews_on_push     = true
-      require_last_push_approval        = true
-      required_approving_review_count   = 0 # probably enable this if/when there are more devs
+      require_last_push_approval        = false # make this true when if/when there are more devs
+      required_approving_review_count   = 0     # probably makes this > 0 if/when there are more devs
       required_review_thread_resolution = true
     }
     required_status_checks {

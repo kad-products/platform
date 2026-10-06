@@ -65,11 +65,12 @@ function getCIConfig() {
 				},
 			],
 			'@semantic-release/changelog',
-			'@semantic-release/npm',
+			['@semantic-release/npm'],
+			['@semantic-release/npm', { pkgRoot: 'cli', npmPublish: false }],
 			[
 				'@semantic-release/git',
 				{
-					assets: ['package.json', 'CHANGELOG.md'],
+					assets: ['package.json', 'cli/package.json', 'CHANGELOG.md'],
 					// biome-ignore lint/suspicious/noTemplateCurlyInString: this is how semantic-release expects the message to be formatted
 					message: 'chore(release): ${nextRelease.version}\n\n${nextRelease.notes}',
 				},

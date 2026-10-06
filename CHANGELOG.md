@@ -1,3 +1,9 @@
+## [1.19.2](https://github.com/kad-products/platform/compare/v1.19.1...v1.19.2) (2026-10-06)
+
+### Bug Fixes
+
+* give our cf token read perms on d1 for migration purposes ([f033e93](https://github.com/kad-products/platform/commit/f033e932f4b0fb94d2c398b38eb447517b015635))
+
 ## [1.19.1](https://github.com/kad-products/platform/compare/v1.19.0...v1.19.1) (2026-10-06)
 
 ### Bug Fixes

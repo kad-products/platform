@@ -1,6 +1,6 @@
 resource "cloudflare_account_token" "kad_cloudflare_token" {
   account_id = var.cloudflare_account_id
-  name       = "kad-workflow-automation"
+  name       = "kad-cloudflare-token"
 
   policies = [{
     effect = "allow"

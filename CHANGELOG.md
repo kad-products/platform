@@ -1,3 +1,9 @@
+## [1.16.1](https://github.com/kad-products/platform/compare/v1.16.0...v1.16.1) (2026-10-06)
+
+### Bug Fixes
+
+* align cf token name to variable name ([6af92c1](https://github.com/kad-products/platform/commit/6af92c1b653128e6c6b48bcab2c18c41dd76222b))
+
 ## [1.16.0](https://github.com/kad-products/platform/compare/v1.15.5...v1.16.0) (2026-10-06)
 
 ### Features

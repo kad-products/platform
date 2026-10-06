@@ -28,13 +28,13 @@ This is a personal API token created under your Cloudflare user account (not an 
 
 **Required permissions:**
 
-| Scope   | Permission               | Why                                                 |
-| ------- | ------------------------ | --------------------------------------------------- |
-| Account | Account API Tokens: Edit | Creates the `kad-workflow-automation` account token |
-| Account | Cloudflare R2: Edit      | Creates the R2 bucket                               |
-| Account | Account Settings: Read   | Required to look up permission group IDs at runtime |
+| Scope   | Permission               | Why                                                  |
+| ------- | ------------------------ | ---------------------------------------------------- |
+| Account | Account API Tokens: Edit | Creates the `kad-cloudflare-api-token` account token |
+| Account | Cloudflare R2: Edit      | Creates the R2 bucket                                |
+| Account | Account Settings: Read   | Required to look up permission group IDs at runtime  |
 
-Create it at [**Cloudflare Dashboard → My Profile → API Tokens → Create Token**](https://dash.cloudflare.com/profile/api-tokens).
+Create it at [**Cloudflare Dashboard → My Profile → API Tokens → Create Token**](https://dash.cloudflare.com/profile/api-tokens). Call it `kad-platform-initial-resources`.  If a token of this name already exists, simply roll to a new one.
 
 ### GitHub classic PAT
 
@@ -46,7 +46,7 @@ Used to write the org-level GitHub Actions secrets. Fine-grained PATs do not wor
 
 Because this token has significant org-level access, create it with a short expiration (7 days is enough), and revoke it from GitHub after `tofu apply` completes.
 
-Create it at [**GitHub Settings → Developer Settings → Personal access tokens → Tokens (classic)**](https://github.com/settings/tokens).
+Create it at [**GitHub Settings → Developer Settings → Personal access tokens → Tokens (classic)**](https://github.com/settings/tokens). Name it `kad-platform-initial-resources` or renew the existing one.
 
 ## Setup
 

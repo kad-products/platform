@@ -40,17 +40,17 @@ State is stored at `<app_name>/<state_type>/<state_name>/terraform.tfstate`. `st
 
 The workflow reads the following organization secrets directly — callers do not need to map them:
 
-| Secret | Provisioned by |
-|---|---|
-| `TOFU_BACKEND_ACCESS_KEY_ID` | `open-tofu/state-storage` module |
+| Secret                           | Provisioned by                   |
+| -------------------------------- | -------------------------------- |
+| `KAD_CF_R2_ACCESS_KEY_ID_ID`     | `open-tofu/state-storage` module |
 | `TOFU_BACKEND_SECRET_ACCESS_KEY` | `open-tofu/state-storage` module |
-| `CLOUDFLARE_ACCOUNT_ID` | Set manually as an org secret |
+| `CLOUDFLARE_ACCOUNT_ID`          | Set manually as an org secret    |
 
 ## Inputs
 
-| Input | Required | Description |
-|---|---|---|
-| `app_name` | Yes | Application name — first segment of the state key |
-| `state_type` | Yes | State category — second segment of the state key (e.g. `github-config`, `app-deployment`) |
-| `state_name` | Yes | Instance within the category — third segment of the state key and the GitHub Actions environment (e.g. `setup`, `production`) |
-| `working_directory` | Yes | Path to the OpenTofu root configuration within the calling repo |
+| Input               | Required | Description                                                                                                                   |
+| ------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `app_name`          | Yes      | Application name — first segment of the state key                                                                             |
+| `state_type`        | Yes      | State category — second segment of the state key (e.g. `github-config`, `app-deployment`)                                     |
+| `state_name`        | Yes      | Instance within the category — third segment of the state key and the GitHub Actions environment (e.g. `setup`, `production`) |
+| `working_directory` | Yes      | Path to the OpenTofu root configuration within the calling repo                                                               |

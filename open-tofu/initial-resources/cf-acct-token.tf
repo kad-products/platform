@@ -13,7 +13,7 @@ resource "cloudflare_account_token" "kad_cloudflare_token" {
     })
   }]
 
-  expires_on = "${formatdate("YYYY-MM", timeadd(timestamp(), "2160h"))}-01T00:00:00Z"
+  expires_on = "${formatdate("YYYY-MM", timeadd(plantimestamp(), "2160h"))}-01T00:00:00Z"
 }
 
 data "external" "cf_permission_groups" {

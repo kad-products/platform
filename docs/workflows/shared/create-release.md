@@ -4,7 +4,7 @@ Runs semantic-release on pushes to the main branch to create versioned GitHub re
 
 Manages branch protection automatically: saves the current rules before the release, disables protection so semantic-release can push the version commit and tag, then restores the original rules whether the release succeeds or fails.
 
-Uses `KAD_WORKFLOW_AUTOMATION` rather than `GITHUB_TOKEN` so the release commit triggers downstream workflows.
+Uses `KAD_GITHUB_TOKEN` rather than `GITHUB_TOKEN` so the release commit triggers downstream workflows.
 
 Uses a concurrency group (`create-release`) with `cancel-in-progress: false` to prevent concurrent releases.
 
@@ -14,18 +14,18 @@ None.
 
 ## Secrets
 
-| Secret | Purpose |
-|---|---|
-| `KAD_WORKFLOW_AUTOMATION` | PAT with repo and workflow scopes — used to push the release commit/tag, manage branch protection, and ensure the release commit triggers downstream workflows |
+| Secret             | Purpose                                                                                                                                                        |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `KAD_GITHUB_TOKEN` | PAT with repo and workflow scopes — used to push the release commit/tag, manage branch protection, and ensure the release commit triggers downstream workflows |
 
 ## Permissions
 
-| Permission | Level |
-|---|---|
-| `contents` | `write` |
-| `issues` | `write` |
+| Permission      | Level   |
+| --------------- | ------- |
+| `contents`      | `write` |
+| `issues`        | `write` |
 | `pull-requests` | `write` |
-| `packages` | `read` |
+| `packages`      | `read`  |
 
 ## Requirements
 

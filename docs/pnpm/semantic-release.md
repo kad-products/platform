@@ -14,14 +14,14 @@ All commits must follow [Conventional Commits](https://www.conventionalcommits.o
 
 **Types that trigger releases:**
 
-| Type | Release | Changelog section |
-|---|---|---|
-| `feat` | minor | Features |
-| `fix` | patch | Bug Fixes |
-| `perf` | patch | Performance Improvements |
-| `revert` | patch | Reverts |
-| `refactor` | patch | Code Refactoring |
-| `BREAKING CHANGE` | major | — |
+| Type              | Release | Changelog section        |
+| ----------------- | ------- | ------------------------ |
+| `feat`            | minor   | Features                 |
+| `fix`             | patch   | Bug Fixes                |
+| `perf`            | patch   | Performance Improvements |
+| `revert`          | patch   | Reverts                  |
+| `refactor`        | patch   | Code Refactoring         |
+| `BREAKING CHANGE` | major   | —                        |
 
 Types like `chore`, `docs`, `ci`, `test`, and `style` do not trigger a release.
 
@@ -65,7 +65,7 @@ plugins: [
 
 ## Token requirements
 
-The release workflow uses `KAD_WORKFLOW_AUTOMATION` (a PAT with repo and workflow scopes) rather than `GITHUB_TOKEN`. This is required for two reasons:
+The release workflow uses `KAD_GITHUB_TOKEN` (a PAT with repo and workflow scopes) rather than `GITHUB_TOKEN`. This is required for two reasons:
 
 1. The release commit must bypass branch protection rules, which the default `GITHUB_TOKEN` cannot do
 2. The release commit must trigger downstream workflows (e.g. publish), which pushes from `GITHUB_TOKEN` do not

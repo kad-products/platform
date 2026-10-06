@@ -27,5 +27,5 @@ fi
 tofu init
 tofu import cloudflare_r2_bucket.opentofu_remote_state "${ACCOUNT_ID}/${BUCKET_NAME}"
 tofu import cloudflare_api_token.opentofu_state "${R2_TOKEN_ID}"
-tofu import github_actions_organization_secret.r2_access_key_id "${GITHUB_ORG}/TOFU_BACKEND_ACCESS_KEY_ID"
+tofu import github_actions_organization_secret.r2_access_key_id "${GITHUB_ORG}/KAD_CF_R2_ACCESS_KEY_ID_ID"
 tofu import github_actions_organization_secret.r2_secret_access_key "${GITHUB_ORG}/TOFU_BACKEND_SECRET_ACCESS_KEY"

@@ -42,8 +42,8 @@ jobs:
       - name: Deploy to Integration
         env:
           CLOUDFLARE_ENV: integration
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.KAD_CLOUDFLARE_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.KAD_CLOUDFLARE_ACCOUNT_ID }}
           VITE_APP_VERSION: ${{ inputs.tag }}
         run: pnpm run deploy
 
@@ -81,8 +81,8 @@ jobs:
       - name: Deploy to Staging
         env:
           CLOUDFLARE_ENV: staging
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.KAD_CLOUDFLARE_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.KAD_CLOUDFLARE_ACCOUNT_ID }}
           VITE_APP_VERSION: ${{ inputs.tag }}
         run: pnpm run deploy
 
@@ -120,7 +120,7 @@ jobs:
       - name: Deploy to Production
         env:
           CLOUDFLARE_ENV: production
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.KAD_CLOUDFLARE_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.KAD_CLOUDFLARE_ACCOUNT_ID }}
           VITE_APP_VERSION: ${{ inputs.tag }}
         run: pnpm run deploy

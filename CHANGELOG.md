@@ -1,3 +1,9 @@
+## [1.19.3](https://github.com/kad-products/platform/compare/v1.19.2...v1.19.3) (2026-10-06)
+
+### Bug Fixes
+
+* **deps:** update dependency @octokit/rest to v22 ([5e94a04](https://github.com/kad-products/platform/commit/5e94a04ccc4e8ea88c20208fcd2773ae703a3c75))
+
 ## [1.19.2](https://github.com/kad-products/platform/compare/v1.19.1...v1.19.2) (2026-10-06)
 
 ### Bug Fixes

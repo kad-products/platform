@@ -1,6 +1,6 @@
-import { execSync } from 'node:child_process';
 import type { S3Client } from '@aws-sdk/client-s3';
 import type { ArgumentsCamelCase, Argv } from 'yargs';
+import { getOrgAndRepo } from '../../lib/git';
 import { createR2Client, fetchStateFile, listStateFiles } from '../../lib/r2';
 import { getResource, parseResources } from '../../lib/tofu-state';
 import { logger } from '../../logger';
@@ -22,14 +22,6 @@ export function builder(yargs: Argv): Argv {
 	});
 }
 
-export function getAppName(override?: string): string {
-	if (override) return override;
-	const remote = execSync('git remote get-url origin', { encoding: 'utf8' }).trim();
-	const match = remote.match(/[/:]([^/]+?)(?:\.git)?$/);
-	if (!match) throw new Error(`Could not parse repo name from git remote: ${remote}`);
-	return match[1];
-}
-
 export async function handler(argv: ArgumentsCamelCase<Options>): Promise<void> {
 	let client: S3Client;
 	try {
@@ -41,7 +33,7 @@ export async function handler(argv: ArgumentsCamelCase<Options>): Promise<void> 
 
 	let appName: string;
 	try {
-		appName = getAppName(argv.app);
+		appName = argv.app ?? getOrgAndRepo().repo;
 		logger.verbose(`Using app name: ${appName}`);
 	} catch (err) {
 		logger.error((err as Error).message);

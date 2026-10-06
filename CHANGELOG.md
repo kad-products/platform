@@ -1,3 +1,9 @@
+## [1.19.1](https://github.com/kad-products/platform/compare/v1.19.0...v1.19.1) (2026-10-06)
+
+### Bug Fixes
+
+* disable review requirements for now ([e2ed9db](https://github.com/kad-products/platform/commit/e2ed9db1d9dc24ff86f68188df5cb6f8bc264aa7))
+
 ## [1.19.0](https://github.com/kad-products/platform/compare/v1.18.0...v1.19.0) (2026-10-06)
 
 ### Features

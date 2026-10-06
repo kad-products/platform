@@ -5,10 +5,12 @@ module "repo" {
   repo_description = "KAD Platform Automation"
   is_product       = true
   required_checks = [
-    "plan-github-setup / Plan",
+    "test-cli / run-tests",
+    "lint-cli / lint-code",
+    "test-github-environment / test-open-tofu",
     "lint-code / lint-code",
-    "run-tests / run-tests",
+    "plan-github-setup / plan-open-tofu",
+    "test-github-repo / test-open-tofu",
     "create-release-dry-run / create-release-dry-run",
-    "lint-commits / lint-commits",
   ]
 }

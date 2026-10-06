@@ -43,6 +43,6 @@ There is no automated rotation. This is a manual process until the GitHub App mi
 
 ## Updating the org secret
 
-1. Go to **GitHub → kad-products org → Settings → Secrets and variables → Actions**
+1. Go to [**GitHub → kad-products org → Settings → Secrets and variables → Actions**](https://github.com/organizations/kad-products/settings/secrets/actions/KAD_GITHUB_TOKEN)
 2. Find `KAD_GITHUB_TOKEN` and click **Update**
 3. Paste the new token value and save

@@ -1,6 +1,6 @@
 {
 	"name": "@kad-products/cli",
-	"version": "0.0.1",
+	"version": "1.17.0",
 	"files": [
 		"dist",
 		"README.md"

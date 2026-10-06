@@ -1,3 +1,14 @@
+## [1.17.0](https://github.com/kad-products/platform/compare/v1.16.3...v1.17.0) (2026-10-06)
+
+### Features
+
+* add cli pr-checks command ([fcc94a9](https://github.com/kad-products/platform/commit/fcc94a9b146ca5399942a6af137b0c1a0dd565c0))
+
+### Bug Fixes
+
+* include cli package.json bump in release ([106e9f6](https://github.com/kad-products/platform/commit/106e9f6cd87fc9a70d314daf72e2e88c211e4c33))
+* standardize shared workflows to not have job names ([8aee8fe](https://github.com/kad-products/platform/commit/8aee8fe6b7bc7068cf70059fb785b3c334c84e6a))
+
 ## [1.16.3](https://github.com/kad-products/platform/compare/v1.16.2...v1.16.3) (2026-10-06)
 
 ### Bug Fixes

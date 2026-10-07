@@ -1,3 +1,9 @@
+## [1.20.0](https://github.com/kad-products/platform/compare/v1.19.3...v1.20.0) (2026-10-07)
+
+### Features
+
+* add a way for CI tests to be captured ([208cb7e](https://github.com/kad-products/platform/commit/208cb7e3dd312527d576c312aa7c7748b83d8bd6))
+
 ## [1.19.3](https://github.com/kad-products/platform/compare/v1.19.2...v1.19.3) (2026-10-06)
 
 ### Bug Fixes

@@ -1,3 +1,9 @@
+## [1.22.1](https://github.com/kad-products/platform/compare/v1.22.0...v1.22.1) (2026-10-10)
+
+### Bug Fixes
+
+* handle the is_template var being stripped ([3682876](https://github.com/kad-products/platform/commit/3682876110cbda38ba3f6db8d5a433949d3e4431))
+
 ## [1.22.0](https://github.com/kad-products/platform/compare/v1.21.1...v1.22.0) (2026-10-10)
 
 ### Features

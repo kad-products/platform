@@ -1,3 +1,9 @@
+## [1.21.1](https://github.com/kad-products/platform/compare/v1.21.0...v1.21.1) (2026-10-10)
+
+### Bug Fixes
+
+* **deps:** update dependency yargs to v18 ([a63a480](https://github.com/kad-products/platform/commit/a63a4809acda89b222b76e235e870c98f2e9ab5c))
+
 ## [1.21.0](https://github.com/kad-products/platform/compare/v1.20.0...v1.21.0) (2026-10-10)
 
 ### Features

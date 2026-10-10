@@ -1,6 +1,6 @@
 {
 	"name": "@kad-products/cli",
-	"version": "1.21.0",
+	"version": "1.21.1",
 	"files": [
 		"dist",
 		"README.md"
@@ -23,7 +23,7 @@
 		"@octokit/rest": "^22.0.0",
 		"chalk-template": "^1.1.3",
 		"consola": "^3.4.2",
-		"yargs": "^17.7.2"
+		"yargs": "^18.0.0"
 	},
 	"devDependencies": {
 		"@types/node": "^24.0.0",

@@ -3,6 +3,7 @@ import chalk from 'chalk-template';
 import yargs, { type ArgumentsCamelCase, type Argv } from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import * as ciCmd from './commands/ci';
+import * as tmpltCmd from './commands/tmplt';
 import * as tofuCmd from './commands/tofu';
 import { initLogger, logger } from './logger';
 
@@ -14,6 +15,7 @@ yargs(args)
 	.usage('$0 <command> [options]')
 	.strict()
 	.command(ciCmd)
+	.command(tmpltCmd)
 	.command(tofuCmd)
 	.option('verbose', {
 		type: 'boolean',

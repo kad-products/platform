@@ -1,3 +1,9 @@
+## [1.22.2](https://github.com/kad-products/platform/compare/v1.22.1...v1.22.2) (2026-10-10)
+
+### Bug Fixes
+
+* move cf token to workers admin permission ([59f3371](https://github.com/kad-products/platform/commit/59f3371b0f0f6a45ee8894ad3229f37adb236e8b))
+
 ## [1.22.1](https://github.com/kad-products/platform/compare/v1.22.0...v1.22.1) (2026-10-10)
 
 ### Bug Fixes

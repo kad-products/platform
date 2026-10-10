@@ -11,6 +11,11 @@ variable "is_product" {
   type        = bool
   default     = false
 }
+variable "is_template" {
+  description = "Indication of if the repo should be marked as a template repo within github"
+  type        = bool
+  default     = false
+}
 variable "required_checks" {
   description = "Set/list of checks required to pass on PRs to main"
   type        = set(string)

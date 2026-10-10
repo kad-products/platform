@@ -1,3 +1,13 @@
+## [1.22.0](https://github.com/kad-products/platform/compare/v1.21.1...v1.22.0) (2026-10-10)
+
+### Features
+
+* add tmplt init command for starting a new template project ([8ac3485](https://github.com/kad-products/platform/commit/8ac348571ceae68970cbfbd620f3866cff3e76bf))
+
+### Bug Fixes
+
+* new lockfile ([0e98cb5](https://github.com/kad-products/platform/commit/0e98cb5d0e3348b15742814dad677c68f0a1a0da))
+
 ## [1.21.1](https://github.com/kad-products/platform/compare/v1.21.0...v1.21.1) (2026-10-10)
 
 ### Bug Fixes

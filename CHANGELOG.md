@@ -1,3 +1,9 @@
+## [1.21.0](https://github.com/kad-products/platform/compare/v1.20.0...v1.21.0) (2026-10-10)
+
+### Features
+
+* allow repos to be template repos ([d304d93](https://github.com/kad-products/platform/commit/d304d93ba97090358c49c20ee1aa28b9aee35b5d))
+
 ## [1.20.0](https://github.com/kad-products/platform/compare/v1.19.3...v1.20.0) (2026-10-07)
 
 ### Features

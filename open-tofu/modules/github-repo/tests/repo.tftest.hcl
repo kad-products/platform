@@ -19,6 +19,29 @@ run "product_repo_homepage_url" {
   }
 }
 
+run "template_default_is_disable" {
+  command = plan
+
+  assert {
+    condition     = github_repository.repo.is_template == false
+    error_message = "Expected is_template to be false as the default"
+  }
+}
+
+
+run "template_is_template" {
+  command = plan
+
+  variables {
+    is_template = true
+  }
+
+  assert {
+    condition     = github_repository.repo.is_template == true
+    error_message = "Expected is_template to be true if the input var is true"
+  }
+}
+
 run "non_product_repo_homepage_url" {
   command = plan
 

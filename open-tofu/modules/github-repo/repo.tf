@@ -2,6 +2,7 @@ resource "github_repository" "repo" {
   name         = var.repo_name
   description  = var.repo_description
   homepage_url = var.is_product ? "https://kad-products.com/products/${var.repo_name}/" : ""
+  is_template  = var.is_template
 
   # features
   has_discussions = false

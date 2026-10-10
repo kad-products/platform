@@ -113,7 +113,9 @@ export async function handler(): Promise<void> {
 		writeFileTo(
 			cwd,
 			'infra/github/repo.tf',
-			repoTfContent.replace(/repo_description = "[^"]*"/, `repo_description = "${escapedDescription}"`),
+			repoTfContent
+				.replace(/repo_description = "[^"]*"/, `repo_description = "${escapedDescription}"`)
+				.replace(/\n\s*is_template\s+=\s+true/, ''),
 		);
 	}
 
